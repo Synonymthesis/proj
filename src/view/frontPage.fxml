@@ -23,9 +23,6 @@
                <effect>
                   <Blend />
                </effect>
-               <image>
-                  <Image url="@../../../../Dropbox/Screenshots/Screenshot%202018-10-27%2010.26.53.png" />
-               </image>
             </ImageView>
             <Button fx:id="playButton" layoutX="244.0" layoutY="139.0" mnemonicParsing="false" onAction="#startGame" prefHeight="48.0" prefWidth="110.0" text="Play">
                <font>

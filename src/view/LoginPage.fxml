@@ -19,10 +19,10 @@
                </font>
             </TextField>
             <TextField fx:id="passwordField" layoutX="216.0" layoutY="275.0" promptText="Password" />
-            <Button fx:id="playButton" layoutX="244.0" layoutY="175.0" mnemonicParsing="false" onAction="#startGame" prefHeight="48.0" prefWidth="110.0" text="Play" />
-            <ImageView fitHeight="133.0" fitWidth="200.0" layoutX="200.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+            <Button fx:id="playButton" layoutX="244.0" layoutY="175.0" mnemonicParsing="false" onAction="#startGame" prefHeight="48.0" prefWidth="110.0" text="Play" textFill="#141414" />
+            <ImageView fitHeight="124.0" fitWidth="200.0" layoutX="200.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@titleLogo.png" />
+                  <Image url="@../../../../Dropbox/Screenshots/Screenshot%202018-08-29%2017.15.37.png" />
                </image>
             </ImageView>
          </children></AnchorPane>
