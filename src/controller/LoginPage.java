@@ -46,13 +46,13 @@ public class LoginPage extends Application {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("../view/PlayGame.fxml"));
             Stage stage = (Stage) owner;
-            Scene scene = null;
+            /*Scene scene = null;
             try {
                 scene = new Scene(loader.load());
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            stage.setScene(scene);
+            stage.setScene(scene);*/
     }
 
    
