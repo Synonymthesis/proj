@@ -1,10 +1,9 @@
 language: java
 jdk:
 - oraclejdk9
-script: mvn test -B
 addons:
   sonarcloud:
     organization: synonymthesis
 script:
-  # other script steps might be done before running the actual analysis
+  mvn test -B
   - sonar-scanner
