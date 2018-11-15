@@ -42,7 +42,7 @@ public class LoginPage extends Application {
      * @param actionEvent
      */
     public void startGame(ActionEvent actionEvent){
-            Window owner = playButton.getScene().getWindow();
+            /*Window owner = playButton.getScene().getWindow();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("../view/PlayGame.fxml"));
             Stage stage = (Stage) owner;
@@ -52,7 +52,7 @@ public class LoginPage extends Application {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            stage.setScene(scene);
+            stage.setScene(scene);*/
     }
 
    
