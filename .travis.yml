@@ -5,5 +5,5 @@ addons:
   sonarcloud:
     organization: synonymthesis
 script:
-  mvn test -B
+  - mvn test -B
   - sonar-scanner
