@@ -1,7 +1,6 @@
 language: java
 jdk:
 - oraclejdk8
-script: mvn clean verify
 addons:
   sonarcloud:
     organization: synonymthesis
