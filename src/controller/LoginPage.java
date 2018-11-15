@@ -15,7 +15,7 @@ import java.io.IOException;
 
 
 public class LoginPage extends Application {
-	
+	/*
     @FXML
     private Button playButton;
     @FXML 
@@ -40,7 +40,7 @@ public class LoginPage extends Application {
     /**
      * Menu item for showing assignments due next week
      * @param actionEvent
-     */
+     *//*
     public void startGame(ActionEvent actionEvent){
             Window owner = playButton.getScene().getWindow();
             FXMLLoader loader = new FXMLLoader();
@@ -55,6 +55,6 @@ public class LoginPage extends Application {
             stage.setScene(scene);
     }
 
-   
+   */
 
 }
