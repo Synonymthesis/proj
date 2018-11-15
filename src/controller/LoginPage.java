@@ -42,6 +42,7 @@ public class LoginPage extends Application {
      * @param actionEvent
      */
     public void startGame(ActionEvent actionEvent){
+    	System.out.println("Hello world");
             /*Window owner = playButton.getScene().getWindow();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("../view/PlayGame.fxml"));
