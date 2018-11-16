@@ -22,10 +22,6 @@ public class difficulty extends LoginPage {
         @FXML
         private Button backButton;
 
-        public static void main(String[] args) {
-            launch(args); 
-            }
-
         /**
          * Menu item for showing assignments due next week
          * @param actionEvent
