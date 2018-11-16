@@ -18,8 +18,14 @@ public class PlayGamePage extends LoginPage {
 	@FXML
 	private TextField answerField;
 	@FXML
+	private Label wordPromptLabel;
+	@FXML
 	private Button submitButton;
 	@FXML
 	private Button menuButton;
 	
+	
+	/**
+	 * TODO: Connect wordPromptLabel to back-end 
+	 */
 }

@@ -43,7 +43,7 @@ public class LoginPage extends Application {
      * Menu item for showing assignments due next week
      * @param actionEvent
      */
-    public void startGame(ActionEvent actionEvent){
+    public void startGame(ActionEvent actionEvent) {
             Window owner = playButton.getScene().getWindow();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("../view/PlayGame.fxml"));
@@ -57,7 +57,11 @@ public class LoginPage extends Application {
             stage.setScene(scene);
     }
     
-    public void openMenu(ActionEvent actionEvent){
+    /**
+     * Default action for opening the menu.
+     * @param actionEvent
+     */
+    public void openMenu(ActionEvent actionEvent) {
         Window owner = menuButton.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../view/PauseMenu.fxml"));
@@ -69,7 +73,11 @@ public class LoginPage extends Application {
             e.printStackTrace();
         }
         stage.setScene(scene);
-}
+    }
+    
+    /**
+     * TODO: Login function.
+     */
 
    
 
