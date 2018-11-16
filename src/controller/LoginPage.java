@@ -47,11 +47,11 @@ public class LoginPage extends Application {
             loader.setLocation(getClass().getResource("../view/PlayGame.fxml"));
             Stage stage = (Stage) owner;
             Scene scene = null;
-            try {
+            /*try {
                 scene = new Scene(loader.load());
             } catch (IOException e) {
                 e.printStackTrace();
-            }
+            }*/
             stage.setScene(scene);
     }
 
