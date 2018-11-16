@@ -1,4 +1,8 @@
 language: java
 jdk:
-- oraclejdk8
-script: ant build
+- oraclejdk9
+addons:
+  sonarcloud:
+    organization: synonymthesis
+script:
+  - sonar-scanner
