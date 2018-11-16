@@ -12,19 +12,24 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="800.0">
                <children>
-                  <Button layoutX="199.0" layoutY="91.0" minWidth="400.0" mnemonicParsing="false" text="Resume">
+                  <Button layoutX="199.0" layoutY="33.0" minWidth="400.0" mnemonicParsing="false" text="Resume">
                      <font>
-                        <Font name="Comic Sans MS" size="30.0" />
+                        <Font name="Calibri" size="30.0" />
                      </font>
                   </Button>
-                  <Button fx:id="mainMenuButton" layoutX="199.0" layoutY="309.0" minWidth="400.0" mnemonicParsing="false" onAction="#gotoMainMenu" text="Quit Game">
+                  <Button fx:id="mainMenuButton" layoutX="199.0" layoutY="356.0" minWidth="400.0" mnemonicParsing="false" onAction="#gotoMainMenu" text="Quit Game">
                      <font>
-                        <Font name="Comic Sans MS" size="30.0" />
+                        <Font name="Calibri" size="30.0" />
                      </font>
                   </Button>
-                  <Button layoutX="199.0" layoutY="199.0" minWidth="400.0" mnemonicParsing="false" text="Settings">
+                  <Button layoutX="199.0" layoutY="246.0" minWidth="400.0" mnemonicParsing="false" text="Settings">
                      <font>
-                        <Font name="Comic Sans MS" size="30.0" />
+                        <Font name="Calibri" size="30.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="199.0" layoutY="141.0" minWidth="400.0" mnemonicParsing="false" text="Levels">
+                     <font>
+                        <Font name="Calibri" size="30.0" />
                      </font>
                   </Button>
                </children>
