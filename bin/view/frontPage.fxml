@@ -12,20 +12,25 @@
   <content>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="503.0">
          <children>
-            <Button fx:id="loginButton" layoutX="273.0" layoutY="327.0" mnemonicParsing="false" onAction="#startGame" text="Login" />
-            <TextField fx:id="userField" layoutX="216.0" layoutY="234.0" promptText="Username">
+            <Button fx:id="loginButton" layoutX="270.0" layoutY="327.0" mnemonicParsing="false" onAction="#startGame" text="Login" />
+            <TextField fx:id="userField" layoutX="216.0" layoutY="223.0" promptText="Username">
                <font>
                   <Font name="System Font" size="13.0" />
                </font>
             </TextField>
             <TextField fx:id="passwordField" layoutX="216.0" layoutY="275.0" promptText="Password" />
-            <Button fx:id="playButton" layoutX="244.0" layoutY="175.0" mnemonicParsing="false" onAction="#startGame" prefHeight="48.0" prefWidth="110.0" text="Play" />
-            <ImageView fitHeight="133.0" fitWidth="200.0" layoutX="200.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="109.0" fitWidth="299.0" focusTraversable="true" layoutX="161.0" layoutY="14.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+               <effect>
+                  <Blend />
+               </effect>
                <image>
-                  <Image url="@titleLogo.png" />
+                  <Image url="@../../../../Dropbox/Screenshots/Screenshot%202018-10-27%2010.26.53.png" />
                </image>
             </ImageView>
-            <Button fx:id="menuButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#openMenu" text="Menu" />
+            <Button fx:id="playButton" layoutX="244.0" layoutY="139.0" mnemonicParsing="false" onAction="#startGame" prefHeight="48.0" prefWidth="110.0" text="Play">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
          </children></AnchorPane>
   </content>
 </ScrollPane>
