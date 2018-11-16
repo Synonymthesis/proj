@@ -24,13 +24,13 @@ public class MenuPage extends LoginPage {
         loader.setLocation(getClass().getResource("../view/LoginPage.fxml"));
         Stage stage = (Stage) owner;
         Scene scene = null;
-        /*
+        
         try {
             scene = new Scene(loader.load());
         } catch (IOException e) {
             e.printStackTrace();
         }
-        */
+        
         stage.setScene(scene);
 	}
 }
