@@ -18,17 +18,19 @@ public class MenuPage extends LoginPage {
 	@FXML
 	private Button mainMenuButton;
 	
-	public void gotoMainMenu(ActionEvent actionEvent){
+	public void gotoMainMenu(ActionEvent actionEvent) {
         Window owner = mainMenuButton.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../view/LoginPage.fxml"));
         Stage stage = (Stage) owner;
         Scene scene = null;
+        /*
         try {
             scene = new Scene(loader.load());
         } catch (IOException e) {
             e.printStackTrace();
         }
+        */
         stage.setScene(scene);
-}
+	}
 }
