@@ -1,16 +1,19 @@
 package model;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.ObjectMapper;
 import com.mashape.unirest.http.Unirest;
+import com.mashape.unirest.http.exceptions.UnirestException;
 
 public class WordsAPI {
 	
-	/*public WordsAPI() {
+	public WordsAPI() {
 		Unirest.setObjectMapper(new ObjectMapper() {
 		    private com.fasterxml.jackson.databind.ObjectMapper jacksonObjectMapper
 		                = new com.fasterxml.jackson.databind.ObjectMapper();
@@ -31,10 +34,10 @@ public class WordsAPI {
 		        }
 		    }
 		});
-	}*/
+	}
 	
 	/* Be careful. This is my (Nicole) personal API key and I will be charged if it is used too much */
-	public List<String> getSynonyms(String word) {
+	public List<String> getSynonyms(String word) throws UnirestException {
 		HttpResponse<JsonNode> response = Unirest.get("https://wordsapiv1.p.rapidapi.com/words/test/synonyms")
 				.header("X-Mashape-Key", "342CVBnz3wmshi4XxeGsUAnChRexp12I3Gljsn4Ksp4qdPbyab")
 				.header("X-Mashape-Host", "wordsapiv1.p.rapidapi.com")
@@ -44,10 +47,10 @@ public class WordsAPI {
 		
 		ArrayList<String> synonyms = new ArrayList<String>();
 		if (body.isArray()) {
-			
+			return synonyms;
 		}
 		
-		return new ;
+		return synonyms;
 	}
 
 }
