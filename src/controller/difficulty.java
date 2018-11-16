@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 import java.io.IOException;
  
-public class difficulty extends Application {
+public class difficulty extends LoginPage {
 
         @FXML
         private Button easyButton;
@@ -25,14 +25,6 @@ public class difficulty extends Application {
         public static void main(String[] args) {
             launch(args); 
             }
-
-        @Override
-        public void start(Stage primaryStage) throws IOException {
-            Parent root = FXMLLoader.load(getClass().getResource("../view/difficulty.fxml"));
-            primaryStage.setTitle("FXML Difficulty");
-            primaryStage.setScene(new Scene(root, 800, 500));
-            primaryStage.show();
-        }
 
         /**
          * Menu item for showing assignments due next week

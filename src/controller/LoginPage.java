@@ -44,7 +44,7 @@ public class LoginPage extends Application {
     public void startGame(ActionEvent actionEvent){
             Window owner = playButton.getScene().getWindow();
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("../view/PlayGame.fxml"));
+            loader.setLocation(getClass().getResource("../view/difficulty.fxml"));
             Stage stage = (Stage) owner;
             Scene scene = null;
             try {
