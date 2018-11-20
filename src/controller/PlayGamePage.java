@@ -24,7 +24,6 @@ public class PlayGamePage extends LoginPage {
 	@FXML
 	private Button menuButton;
 	
-	
 	/**
 	 * TODO: Connect wordPromptLabel to back-end 
 	 */
