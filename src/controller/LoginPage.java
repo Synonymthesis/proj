@@ -33,7 +33,9 @@ public class LoginPage extends Application {
     
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../view/LoginPage.fxml"));
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/LoginPage.fxml"));
+        Parent root = null;
+        root = loader.load();
         primaryStage.setTitle("FXML Login");
         primaryStage.setScene(new Scene(root, 800, 500));
         primaryStage.show();
@@ -43,6 +45,7 @@ public class LoginPage extends Application {
      * Menu item for showing assignments due next week
      * @param actionEvent
      */
+<<<<<<< HEAD
     public void startGame(ActionEvent actionEvent) {
         Window owner = playButton.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/PlayGame.fxml"));
@@ -56,6 +59,21 @@ public class LoginPage extends Application {
         Scene scene = null;
         scene = new Scene(root);
         stage.setScene(scene);
+=======
+    public void startGame(ActionEvent actionEvent){
+            Window owner = playButton.getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/PlayGame.fxml"));
+            Parent root = null;
+            try{
+            	root = loader.load();
+            }catch (IOException e) {
+                e.printStackTrace();
+            }
+            Stage stage = (Stage) owner;
+            Scene scene = null;
+            scene = new Scene(root);
+            stage.setScene(scene);
+>>>>>>> 2114549dddc702f7605efc19062e85e4c796ed25
     }
     
     /**
