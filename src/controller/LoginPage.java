@@ -20,6 +20,8 @@ public class LoginPage extends Application {
     private Button playButton;
     @FXML 
     private Button loginButton;
+    @FXML
+    private Button menuButton;
     @FXML 
     private TextField userField;
     @FXML
@@ -41,19 +43,43 @@ public class LoginPage extends Application {
      * Menu item for showing assignments due next week
      * @param actionEvent
      */
-    public void startGame(ActionEvent actionEvent){
-            Window owner = playButton.getScene().getWindow();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("../view/PlayGame.fxml"));
-            Stage stage = (Stage) owner;
-            Scene scene = null;
-            try {
-                scene = new Scene(loader.load());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            stage.setScene(scene);
+    public void startGame(ActionEvent actionEvent) {
+        Window owner = playButton.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/PlayGame.fxml"));
+        Parent root = null;
+        try {
+        	root = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Stage stage = (Stage) owner;
+        Scene scene = null;
+        scene = new Scene(root);
+        stage.setScene(scene);
     }
+    
+    /**
+     * Default action for opening the menu.
+     * @param actionEvent
+     */
+    public void openMenu(ActionEvent actionEvent) {
+    	Window owner = menuButton.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/PauseMenu.fxml"));
+        Parent root = null;
+        try {
+        	root = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Stage stage = (Stage) owner;
+        Scene scene = null;
+        scene = new Scene(root);
+        stage.setScene(scene);
+    }
+    
+    /**
+     * TODO: Login function.
+     */
 
    
 

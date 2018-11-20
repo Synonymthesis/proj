@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="206.0" layoutY="14.0" text="Scoreboard" underline="true">
+         <font>
+            <Font name="Ink Free" size="41.0" />
+         </font>
+      </Label>
+      <Label layoutX="57.0" layoutY="87.0" text="Player 1">
+         <font>
+            <Font name="Ink Free" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="57.0" layoutY="159.0" text="Player 2">
+         <font>
+            <Font name="Ink Free" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="57.0" layoutY="228.0" text="Player 3">
+         <font>
+            <Font name="Ink Free" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="483.0" layoutY="87.0" text="10000">
+         <font>
+            <Font name="Ink Free" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="486.0" layoutY="159.0" text="9000">
+         <font>
+            <Font name="Ink Free" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="485.0" layoutY="228.0" text="8000">
+         <font>
+            <Font name="Ink Free" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="488.0" layoutY="297.0" text="7000">
+         <font>
+            <Font name="Ink Free" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="54.0" layoutY="297.0" text="Player 4">
+         <font>
+            <Font name="Ink Free" size="24.0" />
+         </font>
+      </Label>
+      <Button layoutX="24.0" layoutY="29.0" mnemonicParsing="false" text="(placeholder back button)" />
+   </children>
+</AnchorPane>
