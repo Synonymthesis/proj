@@ -2,7 +2,6 @@ package controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.application.Application;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -13,7 +12,7 @@ import javafx.stage.Window;
 import java.io.IOException;
 
 
-public class PlayGamePage extends LoginPage {
+public class PlayGamePage {
 	
 	@FXML
 	private TextField answerField;
@@ -25,6 +24,21 @@ public class PlayGamePage extends LoginPage {
 	private Button menuButton;
 	
 	/**
-	 * TODO: Connect wordPromptLabel to back-end 
-	 */
+     * Default action for opening the pause menu.
+     * @param actionEvent
+     */
+    public void openMenu(ActionEvent actionEvent) {
+    	Window owner = menuButton.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/PauseMenu.fxml"));
+        Parent root = null;
+        try {
+        	root = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Stage stage = (Stage) owner;
+        Scene scene = null;
+        scene = new Scene(root);
+        stage.setScene(scene);
+    }
 }

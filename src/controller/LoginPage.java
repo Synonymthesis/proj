@@ -21,7 +21,7 @@ public class LoginPage extends Application {
     @FXML 
     private Button loginButton;
     @FXML
-    private Button menuButton;
+    private Button settingsButton;
     @FXML 
     private TextField userField;
     @FXML
@@ -62,12 +62,12 @@ public class LoginPage extends Application {
     }
     
     /**
-     * Default action for opening the menu.
+     * Default action for opening the settings.
      * @param actionEvent
      */
-    public void openMenu(ActionEvent actionEvent) {
-    	Window owner = menuButton.getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/PauseMenu.fxml"));
+    public void openSettings(ActionEvent actionEvent) {
+    	Window owner = settingsButton.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/SettingsPage.fxml"));
         Parent root = null;
         try {
         	root = loader.load();
