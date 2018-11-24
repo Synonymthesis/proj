@@ -18,23 +18,22 @@ public class SynonymAPI {
 	public List<String> getSynonyms(String word) {
 		URL datamuse;
         URLConnection dc;
-        StringBuilder s = null;
+        StringBuilder str = new StringBuilder();
         
         try {
             datamuse = new URL("http://api.datamuse.com/words?rel_syn=" + word);
             dc = datamuse.openConnection();
             BufferedReader in = new BufferedReader(new InputStreamReader(dc.getInputStream(), "UTF-8"));
             String inputLine;
-            s = new StringBuilder();
             while ((inputLine = in.readLine()) != null)
-                s.append(inputLine);
+                str.append(inputLine);
             in.close();
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return s != null ? synonymArray(s.toString()) : null;
+        return str != null ? synonymArray(str.toString()) : null;
 	}
 	
 	public List<String> synonymArray(String synStr) {
