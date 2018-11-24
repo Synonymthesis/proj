@@ -13,7 +13,7 @@ public class SynonymAPITest {
 	private SynonymAPI api;
 
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() {
 		api = new SynonymAPI();
 	}
 
