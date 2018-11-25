@@ -19,9 +19,17 @@ public class SynonymAPITest {
 
 	@Test
 	public void testGetSynonymsTest() {
+		
 		List<String> synonyms = api.getSynonyms("test");
-		assertTrue(synonyms.size() > 4);
+		System.out.println(synonyms);
+		assertTrue(synonyms.size() > 0);
 		assertTrue(synonyms.contains("trial"));
+	}
+	
+	@Test
+	public void testCheckSynonym() {
+		boolean b = api.checkSynonym("test", "trial");
+		assertTrue(b);
 	}
 
 }
