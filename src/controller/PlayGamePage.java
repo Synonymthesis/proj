@@ -31,20 +31,43 @@ public class PlayGamePage implements Initializable {
 	
 	private String currentPrompt;
 	private WordPrompt prompt = new WordPrompt();
+	private SynonymAPI api = new SynonymAPI();
 	
 	//TODO: Change this field to belong to a gameround or round class
 	//      that this playgame controller inherits from. Value determined at game start or menu
 	private int level = 1;
 	
-	
+	/**
+     * Set up prompt for opening the play screen .
+     *
+     */
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
+		updatePrompt();
+	}
+	
+	public void updatePrompt() {
+		System.out.println("Updateing prompt");
 		String word = prompt.getWord(level);
 		currentPrompt = word;
 		wordPromptLabel.setText(word);
+		answerField.setText("");
+	}
+	
+	public void checkAnswer(ActionEvent ae) {
+	
+		String ans = answerField.getText();
+		System.out.println("Retrieving answer: "+ ans);
+		if (api.checkSynonym(currentPrompt, ans)) {
+			//TODO: do some point system thing
+			System.out.println("Correct answer");
+			updatePrompt();
+		}
+		else {
+			System.out.println("WRONG ANSWEREFSDHJ");
+		}
 	}
 
-	
 	/**
      * Default action for opening the pause menu.
      * @param actionEvent

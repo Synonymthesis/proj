@@ -48,5 +48,11 @@ public class SynonymAPI {
         }
         return synonyms;
 	}
+	
+	public boolean checkSynonym(String prompt, String answer) {
+		List<String> arr = this.getSynonyms(prompt);
+		System.out.println(arr);
+		return (arr.contains(answer));
+	}
 
 }

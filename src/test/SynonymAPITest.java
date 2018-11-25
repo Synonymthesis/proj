@@ -19,14 +19,17 @@ public class SynonymAPITest {
 
 	@Test
 	public void testGetSynonymsTest() {
-		//easy,bad,fun,fat,test,say
-		//medium,describe,famous,important,beautiful
-		//hard, Mischievous, lucky, angry
 		
-		List<String> synonyms = api.getSynonyms("fast");
+		List<String> synonyms = api.getSynonyms("test");
 		System.out.println(synonyms);
 		assertTrue(synonyms.size() > 0);
-		//assertTrue(synonyms.contains("trial"));
+		assertTrue(synonyms.contains("trial"));
+	}
+	
+	@Test
+	public void testCheckSynonym() {
+		boolean b = api.checkSynonym("test", "trial");
+		assertTrue(b);
 	}
 
 }

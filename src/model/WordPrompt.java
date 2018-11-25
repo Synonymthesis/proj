@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class WordPrompt {
 	
@@ -62,20 +63,23 @@ public class WordPrompt {
 	public String getWord(int level) {
 		if (level==1) {
 			try {
-				return easyWords.remove(0);
+				int index = new Random().nextInt(easyWords.size());
+				return easyWords.remove(index);
 			}catch(IndexOutOfBoundsException ex) {
 				System.err.println("No more words left in the easy level");
 			}
 		}
 		else if (level ==2) {
 			try {
-				return medWords.remove(0);
+				int index = new Random().nextInt(medWords.size());
+				return medWords.remove(index);
 			}catch(IndexOutOfBoundsException ex) {
 				System.err.println("No more words left in the med level");
 			}
 		}
 		try {
-			return hardWords.remove(0);
+			int index = new Random().nextInt(hardWords.size());
+			return hardWords.remove(index);
 		}catch(IndexOutOfBoundsException ex) {
 			System.err.println("No more words left in the hard level");
 		}
