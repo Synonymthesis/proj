@@ -7,12 +7,15 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.Random;
 
 public class WordPrompt {
 	
-	private int EASYLENGTH = 4;
-	private int MEDLENGTH = 7;
+	private static final Logger LOGGER = Logger.getLogger(WordPrompt.class.getName());
+	private static int easyLength = 4;
+	private static int medLength = 7;
 	
 	//public for tests. not sure if this is any good
 	public  List<String> easyWords = new ArrayList<>();
@@ -28,7 +31,6 @@ public class WordPrompt {
         String line = null;
         try {
         	File f = new File(fileName);
-        	//System.out.println(f.getAbsolutePath());
             // FileReader reads text files in the default encoding.
             FileReader fileReader = 
                 new FileReader(f.getAbsolutePath() );
@@ -36,11 +38,10 @@ public class WordPrompt {
             BufferedReader bufferedReader = 
                 new BufferedReader(fileReader);
             while((line = bufferedReader.readLine()) != null) {
-                //System.out.println(line);
-            	if (line.length() <= EASYLENGTH){
+            	if (line.length() <= easyLength){
             		easyWords.add(line);
             	}
-            	else if (line.length() <= MEDLENGTH)
+            	else if (line.length() <= medLength)
             		medWords.add(line);
             	else
             		hardWords.add(line);
@@ -49,14 +50,10 @@ public class WordPrompt {
             bufferedReader.close();         
         }
         catch(FileNotFoundException ex) {
-            System.out.println(
-                "Unable to find file '" + 
-                fileName + "'");                
+            LOGGER.log(Level.WARNING, "Unable to find file '" + fileName + "'");                
         }
         catch(IOException ex) {
-            System.out.println(
-                "Error reading file '" 
-                + fileName + "'"); 
+        	LOGGER.log(Level.WARNING, "Error reading file '" + fileName + "'"); 
         }
     }
 
@@ -66,7 +63,7 @@ public class WordPrompt {
 				int index = new Random().nextInt(easyWords.size());
 				return easyWords.remove(index);
 			}catch(IndexOutOfBoundsException ex) {
-				System.err.println("No more words left in the easy level");
+				LOGGER.log(Level.WARNING, "No more words left in the easy level");
 			}
 		}
 		else if (level ==2) {
@@ -74,14 +71,14 @@ public class WordPrompt {
 				int index = new Random().nextInt(medWords.size());
 				return medWords.remove(index);
 			}catch(IndexOutOfBoundsException ex) {
-				System.err.println("No more words left in the med level");
+				LOGGER.log(Level.WARNING, "No more words left in the med level");
 			}
 		}
 		try {
 			int index = new Random().nextInt(hardWords.size());
 			return hardWords.remove(index);
 		}catch(IndexOutOfBoundsException ex) {
-			System.err.println("No more words left in the hard level");
+			LOGGER.log(Level.WARNING, "No more words left in the hard level");
 		}
 		return "default";
 	}

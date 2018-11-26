@@ -2,18 +2,23 @@ package test;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 
+import model.SynonymAPI;
 import model.WordPrompt;
 
 public class WordPromptTest {
 
 	private WordPrompt prompt;
+	private SynonymAPI api;
 
 	@Before
 	public void setUp() {
 		prompt = new WordPrompt();
+		api = new SynonymAPI();
 	}
 	
 	@Test
@@ -30,9 +35,10 @@ public class WordPromptTest {
 		//hard, Mischievous, lucky, angry
 		int level = 1;
 		String word = prompt.getWord(level);
-		System.out.println(word);
+		
+		List<String> synonyms = api.getSynonyms("test");
 		assertTrue(word.length() <= 4);
-		//assertTrue(synonyms.contains("trial"));
+		assertTrue(synonyms.contains("trial"));
 	}
 
 }
