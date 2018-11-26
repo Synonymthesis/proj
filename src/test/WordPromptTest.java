@@ -46,12 +46,25 @@ public class WordPromptTest {
 		//easy,bad,fun,fat,test,say
 		//medium,describe,famous,important,beautiful
 		//hard, Mischievous, lucky, angry
-		int level = 1;
+		int level = 2;
 		String word = prompt.getWord(level);
 		
 		List<String> synonyms = api.getSynonyms("beautiful");
 		assertTrue(word.length() <= 4);
 		assertTrue(synonyms.contains("pretty"));
+	}
+	
+	@Test
+	public void testGetWordsHard() {
+		//easy,bad,fun,fat,test,say
+		//medium,describe,famous,important,beautiful
+		//hard, Mischievous, lucky, angry
+		int level = 3;
+		String word = prompt.getWord(level);
+		
+		List<String> synonyms = api.getSynonyms("mischievous");
+		assertTrue(word.length() <= 4);
+		assertTrue(synonyms.contains("bad"));
 	}
 
 }
