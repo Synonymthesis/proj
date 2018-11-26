@@ -13,9 +13,9 @@ import java.util.Random;
 
 public class WordPrompt {
 	
-	private final static Logger LOGGER = Logger.getLogger(WordPrompt.class.getName());
-	private static int EASYLENGTH = 4;
-	private static int MEDLENGTH = 7;
+	private static final Logger LOGGER = Logger.getLogger(WordPrompt.class.getName());
+	private static int easyLength = 4;
+	private static int medLength = 7;
 	
 	//public for tests. not sure if this is any good
 	public  List<String> easyWords = new ArrayList<>();
@@ -38,10 +38,10 @@ public class WordPrompt {
             BufferedReader bufferedReader = 
                 new BufferedReader(fileReader);
             while((line = bufferedReader.readLine()) != null) {
-            	if (line.length() <=EASYLENGTH){
+            	if (line.length() <= easyLength){
             		easyWords.add(line);
             	}
-            	else if (line.length() <= MEDLENGTH)
+            	else if (line.length() <= medLength)
             		medWords.add(line);
             	else
             		hardWords.add(line);
