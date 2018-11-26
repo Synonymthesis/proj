@@ -23,7 +23,6 @@ public class MenuPage {
 	@FXML
     private Button levelButton;
 
-	
 	public void gotoMainMenu(ActionEvent actionEvent) {
 		Window owner = mainMenuButton.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/LoginPage.fxml"));
@@ -76,6 +75,5 @@ public class MenuPage {
         scene = new Scene(root);
         stage.setScene(scene);
     }
-    
-	
+
 }

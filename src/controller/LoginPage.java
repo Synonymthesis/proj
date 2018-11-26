@@ -17,6 +17,8 @@ public class LoginPage extends Application {
     private Button playButton;
     @FXML 
     private Button loginButton;
+    @FXML
+    private Button settingsButton;
     @FXML 
     private TextField userField;
     @FXML
@@ -40,13 +42,14 @@ public class LoginPage extends Application {
      * Menu item for showing assignments due next week
      * @param actionEvent
      */
+
     public void startGame(ActionEvent actionEvent){
             Window owner = playButton.getScene().getWindow();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/difficulty.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/PlayGame.fxml"));
             Parent root = null;
-            try {
+            try{
             	root = loader.load();
-            } catch (IOException e) {
+            }catch (IOException e) {
                 e.printStackTrace();
             }
             Stage stage = (Stage) owner;
@@ -54,4 +57,30 @@ public class LoginPage extends Application {
             scene = new Scene(root);
             stage.setScene(scene);
     }
+
+    
+    /**
+     * Default action for opening the settings.
+     * @param actionEvent
+     */
+    public void openSettings(ActionEvent actionEvent) {
+    	Window owner = settingsButton.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/SettingsPage.fxml"));
+        Parent root = null;
+        try {
+        	root = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Stage stage = (Stage) owner;
+        Scene scene = null;
+        scene = new Scene(root);
+        stage.setScene(scene);
+    }
+    
+    /**
+     * TODO: Login function.
+     */
+
 }
+
