@@ -31,57 +31,64 @@ public class difficulty extends LoginPage {
             Window owner = easyButton.getScene().getWindow();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("../view/PlayGame.fxml"));
+            Parent root = null;
+            try {
+        	      root = loader.load();
+            } catch (IOException e) {
+               e.printStackTrace();
+            }
             Stage stage = (Stage) owner;
             Scene scene = null;
-            try {
-                scene = new Scene(loader.load());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            scene = new Scene(root);
             stage.setScene(scene);
-        }
+	       }
         
         public void medLevel(ActionEvent actionEvent){
             Window owner = mediumButton.getScene().getWindow();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("../view/PlayGame.fxml"));
+            Parent root = null;
+            try {
+        	      root = loader.load();
+            } catch (IOException e) {
+               e.printStackTrace();
+            }
             Stage stage = (Stage) owner;
             Scene scene = null;
-            try {
-                scene = new Scene(loader.load());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            scene = new Scene(root);
             stage.setScene(scene);
-        }
+	       }
         
         public void hardLevel(ActionEvent actionEvent){
             Window owner = hardButton.getScene().getWindow();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("../view/PlayGame.fxml"));
+            Parent root = null;
+            try {
+        	      root = loader.load();
+            } catch (IOException e) {
+               e.printStackTrace();
+            }
             Stage stage = (Stage) owner;
             Scene scene = null;
-            try {
-                scene = new Scene(loader.load());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            scene = new Scene(root);
             stage.setScene(scene);
-        }
+	       }
 
         public void goBack(ActionEvent actionEvent){
             Window owner = backButton.getScene().getWindow();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("../view/LoginPage.fxml"));
+            Parent root = null;
+            try {
+        	      root = loader.load();
+            } catch (IOException e) {
+               e.printStackTrace();
+            }
             Stage stage = (Stage) owner;
             Scene scene = null;
-            try {
-                scene = new Scene(loader.load());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            scene = new Scene(root);
             stage.setScene(scene);
-        }
-
+	       }
 }
 
