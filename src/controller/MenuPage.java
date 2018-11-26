@@ -17,12 +17,6 @@ public class MenuPage {
 	@FXML
 	private Button mainMenuButton;
 	
-	//make settings return and levels 
-	@FXML
-    private Button settingsButton;
-	@FXML
-    private Button levelButton;
-
 	public void gotoMainMenu(ActionEvent actionEvent) {
 		Window owner = mainMenuButton.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/LoginPage.fxml"));
@@ -37,43 +31,4 @@ public class MenuPage {
         scene = new Scene(root);
         stage.setScene(scene);
 	}
-	
-	/**
-     * Default action for opening the settings.
-     * @param actionEvent
-     */
-    public void openSettings(ActionEvent actionEvent) {
-    	Window owner = settingsButton.getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/SettingsPage.fxml"));
-        Parent root = null;
-        try {
-        	root = loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Stage stage = (Stage) owner;
-        Scene scene = null;
-        scene = new Scene(root);
-        stage.setScene(scene);
-    }
-    
-    /**
-     * Default action for choosing level.
-     * @param actionEvent
-     */
-    public void getLevel(ActionEvent actionEvent) {
-    	Window owner = levelButton.getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/difficulty.fxml"));
-        Parent root = null;
-        try {
-        	root = loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Stage stage = (Stage) owner;
-        Scene scene = null;
-        scene = new Scene(root);
-        stage.setScene(scene);
-    }
-
 }
