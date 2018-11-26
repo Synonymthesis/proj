@@ -11,8 +11,8 @@ import java.util.Random;
 
 public class WordPrompt {
 	
-	private int EASYLENGTH = 4;
-	private int MEDLENGTH = 7;
+	private int EASY_LENGTH = 4;
+	private int MED_LENGTH = 7;
 	
 	//public for tests. not sure if this is any good
 	public  List<String> easyWords = new ArrayList<>();
@@ -37,10 +37,10 @@ public class WordPrompt {
                 new BufferedReader(fileReader);
             while((line = bufferedReader.readLine()) != null) {
                 //System.out.println(line);
-            	if (line.length() <= EASYLENGTH){
+            	if (line.length() <= EASY_LENGTH){
             		easyWords.add(line);
             	}
-            	else if (line.length() <= MEDLENGTH)
+            	else if (line.length() <= MED_LENGTH)
             		medWords.add(line);
             	else
             		hardWords.add(line);

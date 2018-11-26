@@ -1,5 +1,6 @@
 package test;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.util.List;
@@ -21,8 +22,7 @@ public class SynonymAPITest {
 	public void testGetSynonymsTest() {
 		
 		List<String> synonyms = api.getSynonyms("test");
-		System.out.println(synonyms);
-		assertTrue(synonyms.size() > 0);
+		assertFalse(synonyms.isEmpty());
 		assertTrue(synonyms.contains("trial"));
 	}
 	
