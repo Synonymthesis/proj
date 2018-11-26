@@ -22,11 +22,13 @@
                         <Font name="Calibri" size="30.0" />
                      </font>
                   </Button>
+                  <Button fx:id="settingsButton" layoutX="199.0" layoutY="246.0" minWidth="400.0" mnemonicParsing="false" onAction="#openSettings" text="Settings">
                   <Button layoutX="199.0" layoutY="246.0" minWidth="400.0" mnemonicParsing="false" text="Settings">
                      <font>
                         <Font name="Calibri" size="30.0" />
                      </font>
                   </Button>
+                  <Button fx:id="levelButton" layoutX="199.0" layoutY="141.0" minWidth="400.0" mnemonicParsing="false" onAction="#getLevel" text="Levels">
                   <Button layoutX="199.0" layoutY="141.0" minWidth="400.0" mnemonicParsing="false" text="Levels">
                      <font>
                         <Font name="Calibri" size="30.0" />

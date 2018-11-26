@@ -7,12 +7,9 @@ import javafx.application.Application;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-
 import javafx.stage.Stage;
 import javafx.stage.Window;
-
 import java.io.IOException;
-
 
 public class LoginPage extends Application {
 	
@@ -60,6 +57,7 @@ public class LoginPage extends Application {
             scene = new Scene(root);
             stage.setScene(scene);
     }
+
     
     /**
      * Default action for opening the settings.
@@ -84,6 +82,5 @@ public class LoginPage extends Application {
      * TODO: Login function.
      */
 
-   
-
 }
+
