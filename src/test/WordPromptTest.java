@@ -50,7 +50,8 @@ public class WordPromptTest {
 		String word = prompt.getWord(level);
 		
 		List<String> synonyms = api.getSynonyms("beautiful");
-		assertTrue(word.length() <= 4);
+		assertTrue(word.length() > 4);
+		assertTrue(word.length() <= 7);
 		assertTrue(synonyms.contains("pretty"));
 	}
 	
@@ -63,7 +64,7 @@ public class WordPromptTest {
 		String word = prompt.getWord(level);
 		
 		List<String> synonyms = api.getSynonyms("mischievous");
-		assertTrue(word.length() <= 4);
+		assertTrue(word.length() > 7);
 		assertTrue(synonyms.contains("bad"));
 	}
 

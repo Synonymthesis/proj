@@ -8,12 +8,16 @@ import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-import com.codesnippets4all.json.parsers.JSONParser;
-import com.codesnippets4all.json.parsers.JsonParserFactory;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 public class SynonymAPI {
+	private static final Logger LOGGER = Logger.getLogger(WordPrompt.class.getName());
 	
 	public List<String> getSynonyms(String word) {
 		URL datamuse;
@@ -37,13 +41,16 @@ public class SynonymAPI {
 	public List<String> synonymArray(String synStr) {
 		List<String> synonyms = new ArrayList<>();
 		
-		JsonParserFactory factory=JsonParserFactory.getInstance();
-        JSONParser parser=factory.newJsonParser();
-        Map jsonData=parser.parseJson(synStr);
-        List al= (List) jsonData.get("root");
-        for (int i = 0; i < al.size(); i++) {
-        	synonyms.add((String) ((Map)al.get(i)).get("word"));
-        }
+        JSONParser parser = new JSONParser();
+        JSONArray jsonData;
+		try {
+			jsonData = (JSONArray)(parser.parse(synStr));
+	        for (Object element : jsonData) {
+	        	synonyms.add((String) ((JSONObject)element).get("word"));
+	        }
+		} catch (ParseException e) {
+			LOGGER.log(Level.WARNING, "Could not parse JSONArray.");
+		}
         return synonyms;
 	}
 	
