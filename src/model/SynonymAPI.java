@@ -49,7 +49,7 @@ public class SynonymAPI {
 	        	synonyms.add((String) ((JSONObject)element).get("word"));
 	        }
 		} catch (ParseException e) {
-			LOGGER.log(Level.WARNING, "Could not parse JSONArray.");
+            LOGGER.log(Level.WARNING, e.toString());
 		}
         return synonyms;
 	}
