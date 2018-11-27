@@ -1,5 +1,4 @@
 package controller;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -63,7 +62,7 @@ public class MenuPage {
      */
     public void getLevel() {
     	Window owner = levelButton.getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/difficulty.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/Difficulty.fxml"));
         Parent root = null;
         try {
         	root = loader.load();

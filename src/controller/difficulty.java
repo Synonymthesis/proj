@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 import java.io.IOException;
  
-public class difficulty extends LoginPage {
+public class Difficulty extends LoginPage {
 
         @FXML
         private Button easyButton;
