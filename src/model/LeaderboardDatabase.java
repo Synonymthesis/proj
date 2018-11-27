@@ -17,35 +17,35 @@ import org.json.simple.parser.ParseException;
 public class LeaderboardDatabase {
 
 	private static final Logger LOGGER = Logger.getLogger(WordPrompt.class.getName());
-	private static final String filename = "leaderboard.json";
+	private static final String FILENAME = "leaderboard.json";
 	private static Map<String, Integer> scores;
 	
+	public LeaderboardDatabase() {
+		scores = new HashMap<String, Integer>();
+		JSONParser parser = new JSONParser();
+        JSONArray jsonData;
+		try {
+            jsonData = (JSONArray) (parser.parse(new FileReader(FILENAME)));
+	        for (Object element : jsonData) {
+	        	scores.put((String) ((JSONObject)element).get("word"), (Integer) ((JSONObject)element).get("score"));
+	        }
+        } catch (IOException|ParseException e) {
+            LOGGER.log(Level.WARNING, e.toString());
+        }
+	}
+	
 	public Map<String, Integer> getScores() {
-		if (scores == null) {
-			JSONParser parser = new JSONParser();
-	        JSONArray jsonData;
-			try {
-	            jsonData = (JSONArray) (parser.parse(new FileReader(filename)));
-		        for (Object element : jsonData) {
-		        	scores.put((String) ((JSONObject)element).get("word"), (Integer) ((JSONObject)element).get("score"));
-		        }
-	        } catch (FileNotFoundException e) {
-	            LOGGER.log(Level.WARNING, e.toString());
-	        } catch (IOException e) {
-	            LOGGER.log(Level.WARNING, e.toString());
-			} catch (ParseException e) {
-	            LOGGER.log(Level.WARNING, e.toString());
-			}
-		}
 		return scores;
 	}
 	
 	public void saveScore(String word, int score) {
+		scores.put(word, score);
+		
 		JSONObject obj = new JSONObject();
         obj.put("word", word);
         obj.put("score", score);
 
-        try (FileWriter file = new FileWriter(filename)) {
+        try (FileWriter file = new FileWriter(FILENAME)) {
 
             file.write(obj.toJSONString());
             file.flush();
