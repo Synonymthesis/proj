@@ -1,6 +1,5 @@
 package model;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -18,10 +17,10 @@ public class LeaderboardDatabase {
 
 	private static final Logger LOGGER = Logger.getLogger(WordPrompt.class.getName());
 	private static final String FILENAME = "leaderboard.json";
-	private static Map<String, Integer> scores;
+	private Map<String, Integer> scores;
 	
 	public LeaderboardDatabase() {
-		scores = new HashMap<String, Integer>();
+		scores = new HashMap<>();
 		JSONParser parser = new JSONParser();
         JSONArray jsonData;
 		try {
