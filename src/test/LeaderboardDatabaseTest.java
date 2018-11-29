@@ -58,22 +58,26 @@ public class LeaderboardDatabaseTest {
 	@Test
 	public void testAddScore() {
 		Map<String, Integer> scores = new HashMap<>();
+		String name = "Test1";
+		int score = 123;
 		
-		data.saveScore("Test1", 123);
+		data.saveScore(name, score);
 		assertFalse(data.getScores().isEmpty());
 		
-		scores.put("Test1", 123);
+		scores.put(name, score);
 		assertEquals(scores, data.getScores());
 	}
 	
 	@Test
 	public void testReadInScores() {
 		Map<String, Integer> scores = new HashMap<>();
+		String name = "Test1";
+		int score = 123;
 		
-		data.saveScore("Test1", 123);
+		data.saveScore(name, score);
 		assertFalse(data.getScores().isEmpty());
 		
-		scores.put("Test1", 123);
+		scores.put(name, score);
 		assertEquals(scores, data.getScores());
 		
 		LeaderboardDatabase data2 = new LeaderboardDatabase(FILENAME);

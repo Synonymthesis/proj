@@ -16,13 +16,13 @@ import org.json.simple.parser.ParseException;
 public class LeaderboardDatabase {
 
 	private static final Logger LOGGER = Logger.getLogger(WordPrompt.class.getName());
-	private static final String FILENAME = "src/model/leaderboard.json";
+	private static final String DEFAULT_FILENAME = "src/model/leaderboard.json";
 	private Map<String, Integer> scores;
 	
 	private String filename;
 	
 	public LeaderboardDatabase() {
-		this(FILENAME);
+		this(DEFAULT_FILENAME);
 	}
 	
 	/* This constructor should be only called directly for testing and debugging. */
@@ -56,7 +56,7 @@ public class LeaderboardDatabase {
 
         try (FileWriter file = new FileWriter(filename)) {
             file.write(scoresList.toJSONString());
-            file.close();
+            file.flush();
 
         } catch (IOException e) {
             LOGGER.log(Level.WARNING, e.toString());
