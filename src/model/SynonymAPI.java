@@ -46,7 +46,10 @@ public class SynonymAPI {
 		try {
 			jsonData = (JSONArray)(parser.parse(synStr));
 	        for (Object element : jsonData) {
-	        	synonyms.add((String)((JSONObject)element).get("word"));
+	        	Object word = ((JSONObject)element).get("word");
+	        	if (word instanceof String) {
+	        		synonyms.add((String)(word));
+	        	}
 	        }
 		} catch (ParseException e) {
             LOGGER.log(Level.WARNING, e.toString());

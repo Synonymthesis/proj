@@ -16,17 +16,29 @@ import org.json.simple.parser.ParseException;
 public class LeaderboardDatabase {
 
 	private static final Logger LOGGER = Logger.getLogger(WordPrompt.class.getName());
-	private static final String FILENAME = "leaderboard.json";
+	private static final String FILENAME = "src/model/leaderboard.json";
 	private Map<String, Integer> scores;
 	
+	private String filename;
+	
 	public LeaderboardDatabase() {
+		this(FILENAME);
+	}
+	
+	/* This constructor should be only called directly for testing and debugging. */
+	public LeaderboardDatabase(String filename) {
+		this.filename = filename;
 		scores = new HashMap<>();
 		JSONParser parser = new JSONParser();
         JSONArray jsonData;
 		try {
-            jsonData = (JSONArray) (parser.parse(new FileReader(FILENAME)));
+            jsonData = (JSONArray) (parser.parse(new FileReader(filename)));
 	        for (Object element : jsonData) {
-	        	scores.put((String) ((JSONObject)element).get("word"), (Integer) ((JSONObject)element).get("score"));
+	        	Object name = ((JSONObject)element).get("name");
+	        	Object score = ((JSONObject)element).get("score");
+	        	if (name instanceof String && score instanceof Long) {
+	        		scores.put((String)name, ((Long)score).intValue());
+	        	}
 	        }
         } catch (IOException|ParseException e) {
             LOGGER.log(Level.WARNING, e.toString());
@@ -37,21 +49,31 @@ public class LeaderboardDatabase {
 		return scores;
 	}
 	
-	public void saveScore(String word, int score) {
-		scores.put(word, score);
+	public void saveScore(String name, int score) {
+		scores.put(name, score);
 		
-		JSONObject obj = new JSONObject();
-        obj.put("word", word);
-        obj.put("score", score);
+		JSONArray scoresList = scoresToJSON();
 
-        try (FileWriter file = new FileWriter(FILENAME)) {
-
-            file.write(obj.toJSONString());
-            file.flush();
+        try (FileWriter file = new FileWriter(filename)) {
+            file.write(scoresList.toJSONString());
+            file.close();
 
         } catch (IOException e) {
             LOGGER.log(Level.WARNING, e.toString());
         }
+	}
+	
+	private JSONArray scoresToJSON() {
+		JSONArray scoresList = new JSONArray();
+		
+		for (Map.Entry<String,Integer> entry : scores.entrySet()) {
+			JSONObject score = new JSONObject();
+			score.put("name", entry.getKey());
+			score.put("score", entry.getValue());
+			scoresList.add(score);
+		}
+		
+		return scoresList;
 	}
 
 }
