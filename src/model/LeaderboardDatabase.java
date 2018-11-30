@@ -13,6 +13,16 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+/*
+ * This class is used for retaining leaderboard/history information for the current user/device.
+ * The current leaderboard is stored in a json encoded file and each time a new leaderboard database object is created,
+ * the file is updated.
+ * 
+ * Use:
+ *    * create a new LeaderboardDatabase object for use throughout the app (as long as you only
+ *      have one at a time there is no issue if you just create new ones)
+ *    * the scores map is a map from String names to Integer scores
+ */
 public class LeaderboardDatabase {
 
 	private static final Logger LOGGER = Logger.getLogger(WordPrompt.class.getName());
@@ -45,10 +55,16 @@ public class LeaderboardDatabase {
         }
 	}
 	
+	/* 
+	 * Returns the map of names to scores.
+	 */
 	public Map<String, Integer> getScores() {
 		return scores;
 	}
 	
+	/*
+	 * Saves a new score pair. 2 arguments are the String name/username and the int score that they earned.
+	 */
 	public void saveScore(String name, int score) {
 		scores.put(name, score);
 		
@@ -63,6 +79,9 @@ public class LeaderboardDatabase {
         }
 	}
 	
+	/*
+	 * Helper method for saving scores to the database.
+	 */
 	private JSONArray scoresToJSON() {
 		JSONArray scoresList = new JSONArray();
 		
