@@ -1,0 +1,11 @@
+.root {
+    -fx-font-size: 14px;
+    -fx-font-family: sans-serif;
+    -fx-background-image: url("./background1.jpg");
+}
+
+.button {
+    -fx-font: 16px lato,sans-serif;
+    -fx-padding: 10;
+    -fx-background-color: #CCFF99;
+}
