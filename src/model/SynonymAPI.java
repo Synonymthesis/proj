@@ -19,7 +19,7 @@ import org.json.simple.parser.ParseException;
 public class SynonymAPI {
 	private static final Logger LOGGER = Logger.getLogger(WordPrompt.class.getName());
 	
-	public List<String> getSynonyms(String word) {
+	public static List<String> getSynonyms(String word) {
 		URL datamuse;
         URLConnection dc;
         StringBuilder str = new StringBuilder();
@@ -35,10 +35,10 @@ public class SynonymAPI {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return str.length() > 0 ? synonymArray(str.toString()) : null;
+        return str.length() > 0 ? SynonymAPI.synonymArray(str.toString()) : null;
 	}
 	
-	public List<String> synonymArray(String synStr) {
+	public static List<String> synonymArray(String synStr) {
 		List<String> synonyms = new ArrayList<>();
 		
         JSONParser parser = new JSONParser();
@@ -57,8 +57,8 @@ public class SynonymAPI {
         return synonyms;
 	}
 	
-	public boolean checkSynonym(String prompt, String answer) {
-		List<String> arr = this.getSynonyms(prompt);
+	public static boolean checkSynonym(String prompt, String answer) {
+		List<String> arr = SynonymAPI.getSynonyms(prompt);
 		return (arr.contains(answer));
 	}
 
