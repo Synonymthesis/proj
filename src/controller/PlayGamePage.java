@@ -28,6 +28,8 @@ public class PlayGamePage implements Initializable {
 	private Button submitButton;
 	@FXML
 	private Button menuButton;
+	@FXML 
+	private Button skipButton;
 	
 	private String currentPrompt;
 	private WordPrompt prompt = new WordPrompt();
