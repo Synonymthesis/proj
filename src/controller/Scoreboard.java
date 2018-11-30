@@ -1,30 +1,24 @@
 package controller;
+
+import java.io.IOException;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
-
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
-import java.io.IOException;
-
-
-public class MenuPage {
+public class Scoreboard {
 	
 	@FXML
-	private Button mainMenuButton;
+	private Button backButton;
+	
 	@FXML
-	private Button resumeButton;
-	
-	public void gotoMainMenu(ActionEvent actionEvent) {
-		transitionScene(mainMenuButton, "../view/LoginPage.fxml");
-	}
-	
-	public void resumeGame() {
-		transitionScene(resumeButton, "../view/PlayGame.fxml");
+	private void backToMain(ActionEvent event) {
+		transitionScene(backButton, "../view/LoginPage.fxml");
 	}
 	
 	private void transitionScene(Button button, String fxmlScene) {
