@@ -10,6 +10,7 @@ import javafx.scene.control.*;
 
 import javafx.stage.Stage;
 import javafx.stage.Window;
+import model.Player;
 
 import java.io.IOException;
 
@@ -28,6 +29,8 @@ public class LoginPage extends Application {
     private TextField userField;
     @FXML
     private TextField passwordField;
+    
+    private static Player player= new Player();
     
     public static void main(String[] args) {
         launch(args);
@@ -50,6 +53,20 @@ public class LoginPage extends Application {
 
     public void startGame(ActionEvent actionEvent){
         transitionScene(playButton, "../view/PlayGame.fxml");
+    }
+    
+    public Player getPlayer() {
+    	return player;
+    }
+    
+    public void getUsername(ActionEvent actionEvent) {
+    	String text = userField.getText();
+    	player.setName(text);
+    }
+    
+    public void getPasswd(ActionEvent ae) {
+    	String passwd = passwordField.getText();
+    	//TODO: save password to username as key in some table
     }
     
     /**

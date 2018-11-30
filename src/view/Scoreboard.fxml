@@ -5,7 +5,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Scoreboard">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ScoreboardPage">
    <children>
       <Label layoutX="206.0" layoutY="14.0" text="Scoreboard" underline="true">
          <font>
@@ -42,12 +42,12 @@
             <Font name="Ink Free" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="488.0" layoutY="297.0" text="7000">
+      <Label fx:id="playerScore" layoutX="488.0" layoutY="297.0">
          <font>
             <Font name="Ink Free" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="54.0" layoutY="297.0" text="Player 4">
+      <Label layoutX="54.0" layoutY="297.0" text="Your Score">
          <font>
             <Font name="Ink Free" size="24.0" />
          </font>

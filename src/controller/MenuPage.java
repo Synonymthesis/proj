@@ -18,6 +18,9 @@ public class MenuPage {
 	private Button mainMenuButton;
 	@FXML
 	private Button resumeButton;
+	@FXML
+	private Button scoreboardButton;
+	
 	
 	public void gotoMainMenu(ActionEvent actionEvent) {
 		transitionScene(mainMenuButton, "../view/LoginPage.fxml");
@@ -26,6 +29,10 @@ public class MenuPage {
 	public void resumeGame() {
 		transitionScene(resumeButton, "../view/PlayGame.fxml");
 	}
+	
+	public void openScoreboard() {
+    	transitionScene(scoreboardButton, "../view/Scoreboard.fxml");
+    }
 	
 	private void transitionScene(Button button, String fxmlScene) {
 		Window owner = button.getScene().getWindow();
