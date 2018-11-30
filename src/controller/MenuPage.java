@@ -25,7 +25,7 @@ public class MenuPage {
   private Button levelButton;
 	
 	
-	public void gotoMainMenu(ActionEvent actionEvent) {
+	public void gotoMainMenu() {
 		transitionScene(mainMenuButton, "../view/LoginPage.fxml");
 	}
 	
