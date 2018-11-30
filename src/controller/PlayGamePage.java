@@ -55,11 +55,10 @@ public class PlayGamePage implements Initializable {
 		answerField.setText("");
 	}
 	
-	public void checkAnswer(ActionEvent ae) {
+	public void checkAnswer() {
 	
 		String ans = answerField.getText();
 		if (api.checkSynonym(currentPrompt, ans)) {
-			//TODO: do some point system thing
 			LoginPage l = new LoginPage();
 			l.getPlayer().incrementScore(1);
 			updatePrompt();
