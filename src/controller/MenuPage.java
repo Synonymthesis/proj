@@ -1,13 +1,15 @@
+package controller;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.stage.Window;
-
 import java.io.IOException;
 import java.util.logging.Logger;
 import java.util.logging.Level;
+import javafx.scene.Parent;
 
 public class MenuPage {
 	
@@ -32,12 +34,12 @@ public class MenuPage {
 	}
 	
 	public void openScoreboard() {
-    	transitionScene(scoreboardButton, "../view/Scoreboard.fxml");
-    }
+    		transitionScene(scoreboardButton, "../view/Scoreboard.fxml");
+    	}
   
-  public void getLevel() {
-        transitionScene(levelButton, "../view/Difficulty.fxml");
-    }
+  	public void getLevel() {
+        	transitionScene(levelButton, "../view/Difficulty.fxml");
+    	}
 	
 	private void transitionScene(Button button, String fxmlScene) {
 		Window owner = button.getScene().getWindow();
