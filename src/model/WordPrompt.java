@@ -61,28 +61,27 @@ public class WordPrompt {
     }
 
 	public String getWord(int level) {
-		if (level==1) {
+		if (level == 1) {
+			return getWordByDifficulty(easyWords);
+		}
+		else if (level == 2) {
+			return getWordByDifficulty(medWords);
+		}
+		return getWordByDifficulty(hardWords);
+	}
+	
+	private String getWordByDifficulty(List<String> words) {
+		boolean hasSyns = false;
+		String word = null;
+		while (!hasSyns) {
+			int index = new Random().nextInt(words.size());
 			try {
-				int index = new Random().nextInt(easyWords.size());
-				return easyWords.remove(index);
+				word = words.remove(index);
+				hasSyns = !SynonymAPI.getSynonyms(word).isEmpty();
 			}catch(IndexOutOfBoundsException ex) {
-				LOGGER.log(Level.WARNING, "No more words left in the easy level");
+				LOGGER.log(Level.WARNING, "No more words left in the current level");
 			}
 		}
-		else if (level ==2) {
-			try {
-				int index = new Random().nextInt(medWords.size());
-				return medWords.remove(index);
-			}catch(IndexOutOfBoundsException ex) {
-				LOGGER.log(Level.WARNING, "No more words left in the med level");
-			}
-		}
-		try {
-			int index = new Random().nextInt(hardWords.size());
-			return hardWords.remove(index);
-		}catch(IndexOutOfBoundsException ex) {
-			LOGGER.log(Level.WARNING, "No more words left in the hard level");
-		}
-		return "default";
+		return word != null ? word : "default";
 	}
 }
