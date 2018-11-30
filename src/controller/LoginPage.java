@@ -30,10 +30,14 @@ public class LoginPage extends Application {
     @FXML
     private TextField passwordField;
     
+    private static String nextScene = "";
     private static Player player= new Player();
     
     public static void main(String[] args) {
         launch(args);
+    }
+    public String getNextScene() {
+    	return nextScene;
     }
     
     @Override
@@ -52,6 +56,7 @@ public class LoginPage extends Application {
      */
 
     public void startGame(ActionEvent actionEvent){
+    	nextScene = "PlayGame";
         transitionScene(playButton, "../view/PlayGame.fxml");
     }
     
@@ -64,7 +69,7 @@ public class LoginPage extends Application {
     	player.setName(text);
     }
     
-    public void getPasswd(ActionEvent ae) {
+    public void getPasswd() {
     	String passwd = passwordField.getText();
     	//TODO: save password to username as key in some table
     }
@@ -73,11 +78,13 @@ public class LoginPage extends Application {
      * Default action for opening the settings.
      * @param actionEvent
      */
-    public void openSettings(ActionEvent actionEvent) {
+    public void openSettings() {
+    	nextScene = "Settings";
     	transitionScene(settingsButton, "../view/SettingsPage.fxml");
     }
     
     public void openScoreboard() {
+    	nextScene = "Scoreboard";
     	transitionScene(scoreboardButton, "../view/Scoreboard.fxml");
     }
     

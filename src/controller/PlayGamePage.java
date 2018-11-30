@@ -1,5 +1,4 @@
 package controller;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -63,9 +62,7 @@ public class PlayGamePage implements Initializable {
 			l.getPlayer().incrementScore(1);
 			updatePrompt();
 		}
-		else {
-			System.out.println("WRONG ANSWEREFSDHJ");
-		}
+		//else wrong
 	}
 	
 	private void transitionScene(Button button, String fxmlScene) {
