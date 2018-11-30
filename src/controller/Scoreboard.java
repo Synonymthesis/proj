@@ -1,38 +1,30 @@
 package controller;
+
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
-
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+import model.WordPrompt;
 
-import java.io.IOException;
-
-
-public class MenuPage {
+public class Scoreboard {
+	
+	private static final Logger LOGGER = Logger.getLogger(WordPrompt.class.getName());
 	
 	@FXML
-	private Button mainMenuButton;
-	@FXML
-	private Button resumeButton;
-	@FXML
-	private Button scoreboardButton;
+	private Button backButton;
 	
-	
-	public void gotoMainMenu(ActionEvent actionEvent) {
-		transitionScene(mainMenuButton, "../view/LoginPage.fxml");
+	@FXML
+	private void backToMain(ActionEvent event) {
+		transitionScene(backButton, "../view/LoginPage.fxml");
 	}
-	
-	public void resumeGame() {
-		transitionScene(resumeButton, "../view/PlayGame.fxml");
-	}
-	
-	public void openScoreboard() {
-    	transitionScene(scoreboardButton, "../view/Scoreboard.fxml");
-    }
 	
 	private void transitionScene(Button button, String fxmlScene) {
 		Window owner = button.getScene().getWindow();
@@ -41,7 +33,7 @@ public class MenuPage {
         try {
         	root = loader.load();
         } catch (IOException e) {
-            e.printStackTrace();
+            LOGGER.log(Level.WARNING, e.toString());
         }
         Stage stage = (Stage) owner;
         Scene scene = null;
