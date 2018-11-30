@@ -13,7 +13,6 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 
 public class SettingsPage {
-	
 	@FXML
 	private Slider soundsSlider;
 	@FXML
@@ -34,10 +33,5 @@ public class SettingsPage {
         Scene scene = null;
         scene = new Scene(root);
         stage.setScene(scene);
-	}
-	
-	public void testSlider(ActionEvent actionEvent) {
-		System.out.printf("Sounds: %.2f\n", soundsSlider.getValue());
-		System.out.printf("Music: %.2f\n", musicSlider.getValue());
 	}
 }

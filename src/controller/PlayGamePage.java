@@ -28,6 +28,8 @@ public class PlayGamePage implements Initializable {
 	private Button submitButton;
 	@FXML
 	private Button menuButton;
+	@FXML 
+	private Button skipButton;
 	
 	private String currentPrompt;
 	private WordPrompt prompt = new WordPrompt();
@@ -47,7 +49,6 @@ public class PlayGamePage implements Initializable {
 	}
 	
 	public void updatePrompt() {
-		System.out.println("Updateing prompt");
 		String word = prompt.getWord(level);
 		currentPrompt = word;
 		wordPromptLabel.setText(word);
@@ -57,24 +58,20 @@ public class PlayGamePage implements Initializable {
 	public void checkAnswer(ActionEvent ae) {
 	
 		String ans = answerField.getText();
-		System.out.println("Retrieving answer: "+ ans);
 		if (api.checkSynonym(currentPrompt, ans)) {
 			//TODO: do some point system thing
-			System.out.println("Correct answer");
+			LoginPage l = new LoginPage();
+			l.getPlayer().incrementScore(1);
 			updatePrompt();
 		}
 		else {
 			System.out.println("WRONG ANSWEREFSDHJ");
 		}
 	}
-
-	/**
-     * Default action for opening the pause menu.
-     * @param actionEvent
-     */
-    public void openMenu(ActionEvent actionEvent) {
-    	Window owner = menuButton.getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/PauseMenu.fxml"));
+	
+	private void transitionScene(Button button, String fxmlScene) {
+		Window owner = button.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlScene));
         Parent root = null;
         try {
         	root = loader.load();
@@ -85,6 +82,14 @@ public class PlayGamePage implements Initializable {
         Scene scene = null;
         scene = new Scene(root);
         stage.setScene(scene);
+	}
+
+	/**
+     * Default action for opening the pause menu.
+     * @param actionEvent
+     */
+    public void openMenu() {
+    	transitionScene(menuButton, "../view/PauseMenu.fxml");
     }
     
 }

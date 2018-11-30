@@ -10,6 +10,7 @@ import javafx.scene.control.*;
 
 import javafx.stage.Stage;
 import javafx.stage.Window;
+import model.Player;
 
 import java.io.IOException;
 
@@ -22,10 +23,14 @@ public class LoginPage extends Application {
     private Button loginButton;
     @FXML
     private Button settingsButton;
+    @FXML
+    private Button scoreboardButton;
     @FXML 
     private TextField userField;
     @FXML
     private TextField passwordField;
+    
+    private static Player player= new Player();
     
     public static void main(String[] args) {
         launch(args);
@@ -47,18 +52,21 @@ public class LoginPage extends Application {
      */
 
     public void startGame(ActionEvent actionEvent){
-            Window owner = playButton.getScene().getWindow();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/PlayGame.fxml"));
-            Parent root = null;
-            try{
-            	root = loader.load();
-            }catch (IOException e) {
-                e.printStackTrace();
-            }
-            Stage stage = (Stage) owner;
-            Scene scene = null;
-            scene = new Scene(root);
-            stage.setScene(scene);
+        transitionScene(playButton, "../view/PlayGame.fxml");
+    }
+    
+    public Player getPlayer() {
+    	return player;
+    }
+    
+    public void getUsername(ActionEvent actionEvent) {
+    	String text = userField.getText();
+    	player.setName(text);
+    }
+    
+    public void getPasswd(ActionEvent ae) {
+    	String passwd = passwordField.getText();
+    	//TODO: save password to username as key in some table
     }
     
     /**
@@ -66,8 +74,16 @@ public class LoginPage extends Application {
      * @param actionEvent
      */
     public void openSettings(ActionEvent actionEvent) {
-    	Window owner = settingsButton.getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/SettingsPage.fxml"));
+    	transitionScene(settingsButton, "../view/SettingsPage.fxml");
+    }
+    
+    public void openScoreboard() {
+    	transitionScene(scoreboardButton, "../view/Scoreboard.fxml");
+    }
+    
+    private void transitionScene(Button button, String fxmlScene) {
+		Window owner = button.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlScene));
         Parent root = null;
         try {
         	root = loader.load();
@@ -78,12 +94,6 @@ public class LoginPage extends Application {
         Scene scene = null;
         scene = new Scene(root);
         stage.setScene(scene);
-    }
-    
-    /**
-     * TODO: Login function.
-     */
-
-   
+	}
 
 }

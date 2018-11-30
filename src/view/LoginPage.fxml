@@ -12,13 +12,12 @@
   <content>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="503.0">
          <children>
-            <Button fx:id="loginButton" layoutX="273.0" layoutY="327.0" mnemonicParsing="false" onAction="#startGame" text="Login" />
-            <TextField fx:id="userField" layoutX="216.0" layoutY="234.0" promptText="Username">
+            <Button fx:id="loginButton" layoutX="276.0" layoutY="312.0" mnemonicParsing="false" onAction="#startGame" text="Login" />
+            <TextField fx:id="userField" layoutX="216.0" layoutY="234.0" onAction="#getUsername" promptText="Username">
                <font>
                   <Font name="System Font" size="13.0" />
                </font>
             </TextField>
-            <TextField fx:id="passwordField" layoutX="216.0" layoutY="275.0" promptText="Password" />
             <Button fx:id="playButton" layoutX="244.0" layoutY="175.0" mnemonicParsing="false" onAction="#startGame" prefHeight="48.0" prefWidth="110.0" text="Play" textFill="#141414" />
             <ImageView fitHeight="124.0" fitWidth="200.0" layoutX="200.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -26,6 +25,8 @@
                </image>
             </ImageView>
             <Button fx:id="settingsButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#openSettings" text="Settings" />
+            <Button fx:id="scoreboardButton" layoutX="261.0" layoutY="359.0" mnemonicParsing="false" onAction="#openScoreboard" text="Scoreboard" />
+            <PasswordField fx:id="passwordField" layoutX="216.0" layoutY="274.0" onAction="#getPasswd" promptText="Password" />
          </children></AnchorPane>
   </content>
 </ScrollPane>

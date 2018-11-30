@@ -20,7 +20,6 @@ public class SynonymAPITest {
 
 	@Test
 	public void testGetSynonymsTest() {
-		
 		List<String> synonyms = api.getSynonyms("test");
 		assertFalse(synonyms.isEmpty());
 		assertTrue(synonyms.contains("trial"));
