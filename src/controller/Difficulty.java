@@ -7,10 +7,13 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Difficulty extends LoginPage {
     
     private static final String PLAY_GAME = "../view/PlayGame.fxml";
+    private static final Logger LOGGER = Logger.getLogger(Difficulty.class.getName());
     
     @FXML
     private Button easyButton;
@@ -35,7 +38,7 @@ public class Difficulty extends LoginPage {
         try {
             scene = new Scene(loader.load());
         } catch (IOException e) {
-            e.printStackTrace();
+            LOGGER.log(Level.WARNING, "Button won't work.");
         }
         stage.setScene(scene);
     }
@@ -49,7 +52,7 @@ public class Difficulty extends LoginPage {
         try {
             scene = new Scene(loader.load());
         } catch (IOException e) {
-            e.printStackTrace();
+            LOGGER.log(Level.WARNING, "Button won't work.");
         }
         stage.setScene(scene);
     }
@@ -63,7 +66,7 @@ public class Difficulty extends LoginPage {
         try {
             scene = new Scene(loader.load());
         } catch (IOException e) {
-            e.printStackTrace();
+            LOGGER.log(Level.WARNING, "Button won't work.");
         }
         stage.setScene(scene);
     }
@@ -77,7 +80,7 @@ public class Difficulty extends LoginPage {
         try {
             scene = new Scene(loader.load());
         } catch (IOException e) {
-            e.printStackTrace();
+            LOGGER.log(Level.WARNING, "Button won't work.");
         }
         stage.setScene(scene);
     }
