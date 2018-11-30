@@ -29,12 +29,7 @@ public class WordPrompt {
 	public void readWordsFile() {
         String fileName = "src/model/words.txt";
         String line = null;
-        BufferedReader bufferedReader = null;
-        try {
-        	File f = new File(fileName);
-            // Always wrap FileReader in BufferedReader.
-            bufferedReader = 
-                new BufferedReader(new FileReader(f.getAbsolutePath()));
+        try(BufferedReader bufferedReader = new BufferedReader(new FileReader((new File(fileName)).getAbsolutePath()))) {
             while((line = bufferedReader.readLine()) != null) {
             	if (line.length() <= easyLength){
             		easyWords.add(line);
@@ -50,13 +45,6 @@ public class WordPrompt {
         }
         catch(IOException ex) {
         	LOGGER.log(Level.WARNING, "Error reading file '" + fileName + "'"); 
-        }
-        finally {
-        	try {
-				bufferedReader.close();
-			} catch (IOException e) {
-				LOGGER.log(Level.WARNING, "Error closing file '" + fileName + "'");
-			}
         }
     }
 
