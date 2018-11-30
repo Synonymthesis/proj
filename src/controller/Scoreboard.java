@@ -1,6 +1,8 @@
 package controller;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,8 +12,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+import model.WordPrompt;
 
 public class Scoreboard {
+	
+	private static final Logger LOGGER = Logger.getLogger(WordPrompt.class.getName());
 	
 	@FXML
 	private Button backButton;
@@ -28,7 +33,7 @@ public class Scoreboard {
         try {
         	root = loader.load();
         } catch (IOException e) {
-            e.printStackTrace();
+            LOGGER.log(Level.WARNING, e.toString());
         }
         Stage stage = (Stage) owner;
         Scene scene = null;
