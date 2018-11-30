@@ -30,49 +30,23 @@ public class Difficulty extends LoginPage {
      */
     
     public void easyLevel(){
-        Window owner = easyButton.getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource(PLAY_GAME));
-        Stage stage = (Stage) owner;
-        Scene scene = null;
-        try {
-            scene = new Scene(loader.load());
-        } catch (IOException e) {
-            LOGGER.log(Level.WARNING, "Button won't work.");
-        }
-        stage.setScene(scene);
+        transitionScene(easyButton);
     }
     
     public void medLevel(){
-        Window owner = mediumButton.getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource(PLAY_GAME));
-        Stage stage = (Stage) owner;
-        Scene scene = null;
-        try {
-            scene = new Scene(loader.load());
-        } catch (IOException e) {
-            LOGGER.log(Level.WARNING, "Button won't work.");
-        }
-        stage.setScene(scene);
+        transitionScene(mediumButton);
     }
     
     public void hardLevel(){
-        Window owner = hardButton.getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource(PLAY_GAME));
-        Stage stage = (Stage) owner;
-        Scene scene = null;
-        try {
-            scene = new Scene(loader.load());
-        } catch (IOException e) {
-            LOGGER.log(Level.WARNING, "Button won't work.");
-        }
-        stage.setScene(scene);
+        transitionScene(hardButton);
     }
     
     public void goBack(){
-        Window owner = backButton.getScene().getWindow();
+        transitionScene(backButton);
+    }
+    
+    public void transitionScene(Button button) {
+        Window owner = button.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(PLAY_GAME));
         Stage stage = (Stage) owner;
@@ -83,7 +57,6 @@ public class Difficulty extends LoginPage {
             LOGGER.log(Level.WARNING, "Button won't work.");
         }
         stage.setScene(scene);
+        
     }
-    
 }
-
