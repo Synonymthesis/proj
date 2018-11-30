@@ -29,13 +29,15 @@ public class WordPrompt {
 	public void readWordsFile() {
         String fileName = "src/model/words.txt";
         String line = null;
+        FileReader fileReader = null;
+        BufferedReader bufferedReader = null;
         try {
         	File f = new File(fileName);
             // FileReader reads text files in the default encoding.
-            FileReader fileReader = 
+            fileReader = 
                 new FileReader(f.getAbsolutePath() );
             // Always wrap FileReader in BufferedReader.
-            BufferedReader bufferedReader = 
+            bufferedReader = 
                 new BufferedReader(fileReader);
             while((line = bufferedReader.readLine()) != null) {
             	if (line.length() <= easyLength){
@@ -45,9 +47,9 @@ public class WordPrompt {
             		medWords.add(line);
             	else
             		hardWords.add(line);
-            }   
-            // Always close files.
-            bufferedReader.close();         
+            }  
+        	fileReader.close();
+        	bufferedReader.close();      
         }
         catch(FileNotFoundException ex) {
             LOGGER.log(Level.WARNING, "Unable to find file '" + fileName + "'");                
