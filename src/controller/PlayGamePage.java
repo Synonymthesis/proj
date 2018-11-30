@@ -61,6 +61,8 @@ public class PlayGamePage implements Initializable {
 		if (api.checkSynonym(currentPrompt, ans)) {
 			//TODO: do some point system thing
 			System.out.println("Correct answer");
+			LoginPage l = new LoginPage();
+			l.getPlayer().incrementScore(1);
 			updatePrompt();
 		}
 		else {
