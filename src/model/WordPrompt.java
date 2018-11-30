@@ -29,16 +29,12 @@ public class WordPrompt {
 	public void readWordsFile() {
         String fileName = "src/model/words.txt";
         String line = null;
-        FileReader fileReader = null;
         BufferedReader bufferedReader = null;
         try {
         	File f = new File(fileName);
-            // FileReader reads text files in the default encoding.
-            fileReader = 
-                new FileReader(f.getAbsolutePath() );
             // Always wrap FileReader in BufferedReader.
             bufferedReader = 
-                new BufferedReader(fileReader);
+                new BufferedReader(new FileReader(f.getAbsolutePath()));
             while((line = bufferedReader.readLine()) != null) {
             	if (line.length() <= easyLength){
             		easyWords.add(line);
@@ -47,15 +43,20 @@ public class WordPrompt {
             		medWords.add(line);
             	else
             		hardWords.add(line);
-            }  
-        	fileReader.close();
-        	bufferedReader.close();      
+            }      
         }
         catch(FileNotFoundException ex) {
             LOGGER.log(Level.WARNING, "Unable to find file '" + fileName + "'");                
         }
         catch(IOException ex) {
         	LOGGER.log(Level.WARNING, "Error reading file '" + fileName + "'"); 
+        }
+        finally {
+        	try {
+				bufferedReader.close();
+			} catch (IOException e) {
+				LOGGER.log(Level.WARNING, "Error closing file '" + fileName + "'");
+			}
         }
     }
 
