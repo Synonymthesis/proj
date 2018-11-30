@@ -69,9 +69,26 @@ public class LeaderboardDatabaseTest {
 	}
 	
 	@Test
+	public void testAddDuplicateNameScore() {
+		Map<String, Integer> scores = new HashMap<>();
+		String name = "TestA";
+		int score = 123;
+		String name2 = "TestA";
+		int score2 = 345;
+		
+		data.saveScore(name, score);
+		data.saveScore(name2, score2);
+		assertFalse(data.getScores().isEmpty());
+		
+		scores.put(name, score);
+		scores.put(name2, score2);
+		assertEquals(scores, data.getScores());
+	}
+	
+	@Test
 	public void testReadInScores() {
 		Map<String, Integer> scores = new HashMap<>();
-		String name = "Test1";
+		String name = "Test2";
 		int score = 123;
 		
 		data.saveScore(name, score);
@@ -87,11 +104,11 @@ public class LeaderboardDatabaseTest {
 	@Test
 	public void testWriteManyScores() {
 		Map<String, Integer> scores = new HashMap<>();
-		String name1 = "Test1";
+		String name1 = "Test3";
 		int score1 = 123;
-		String name2 = "Test2";
+		String name2 = "Test4";
 		int score2 = 456;
-		String name3 = "Test3";
+		String name3 = "Test5";
 		int score3 = 789;
 		
 		data.saveScore(name1, score1);
