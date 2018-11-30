@@ -16,10 +16,20 @@ public class MenuPage {
 	
 	@FXML
 	private Button mainMenuButton;
+	@FXML
+	private Button resumeButton;
 	
 	public void gotoMainMenu(ActionEvent actionEvent) {
+		transitionScene("../view/LoginPage.fxml");
+	}
+	
+	public void resumeGame() {
+		transitionScene("../view/PlayGame.fxml");
+	}
+	
+	private void transitionScene(String fxmlScene) {
 		Window owner = mainMenuButton.getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/LoginPage.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlScene));
         Parent root = null;
         try {
         	root = loader.load();

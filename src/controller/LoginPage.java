@@ -79,11 +79,5 @@ public class LoginPage extends Application {
         scene = new Scene(root);
         stage.setScene(scene);
     }
-    
-    /**
-     * TODO: Login function.
-     */
-
-   
 
 }
