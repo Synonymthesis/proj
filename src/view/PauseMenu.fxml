@@ -17,14 +17,18 @@
                         <Font name="Calibri" size="30.0" />
                      </font>
                   </Button>
-                  <Button fx:id="mainMenuButton" layoutX="99.0" layoutY="233.0" minWidth="400.0" mnemonicParsing="false" onAction="#gotoMainMenu" text="Quit Game">
+                  <Button fx:id="mainMenuButton" layoutX="99.0" layoutY="280.0" minWidth="400.0" mnemonicParsing="false" onAction="#gotoMainMenu" text="Quit Game">
                      <font>
                         <Font name="Calibri" size="30.0" />
                      </font>
                   </Button>
 
-                  <Button fx:id="levelButton" layoutX="199.0" layoutY="141.0" minWidth="400.0" mnemonicParsing="false" onAction="#getLevel" text="Levels">
-                  <Button fx:id="scoreboardButton" layoutX="99.0" layoutY="146.0" minWidth="400.0" mnemonicParsing="false" onAction="#openScoreboard" text="Scoreboard">
+                  <Button fx:id="levelButton" layoutX="99.0" layoutY="131.0" minWidth="400.0" mnemonicParsing="false" onAction="#getLevel" text="Levels">
+                   <font>
+                        <Font name="Calibri" size="30.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="scoreboardButton" layoutX="99.0" layoutY="200.0" minWidth="400.0" mnemonicParsing="false" onAction="#openScoreboard" text="Scoreboard">
                      <font>
                         <Font name="Calibri" size="30.0" />
                      </font>
