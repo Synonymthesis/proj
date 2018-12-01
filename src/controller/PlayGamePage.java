@@ -33,7 +33,6 @@ public class PlayGamePage implements Initializable {
 	
 	private String currentPrompt;
 	private WordPrompt prompt = new WordPrompt();
-	private SynonymAPI api = new SynonymAPI();
 	
 	//TODO: Change this field to belong to a gameround or round class
 	//      that this playgame controller inherits from. Value determined at game start or menu
@@ -58,7 +57,7 @@ public class PlayGamePage implements Initializable {
 	public void checkAnswer(ActionEvent ae) {
 	
 		String ans = answerField.getText();
-		if (api.checkSynonym(currentPrompt, ans)) {
+		if (SynonymAPI.checkSynonym(currentPrompt, ans)) {
 			//TODO: do some point system thing
 			LoginPage l = new LoginPage();
 			l.getPlayer().incrementScore(1);
