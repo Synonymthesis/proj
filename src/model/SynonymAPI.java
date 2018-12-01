@@ -39,7 +39,7 @@ public class SynonymAPI {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return str.length() > 0 ? SynonymAPI.synonymArray(str.toString()) : new ArrayList<String>();
+        return str.length() > 0 ? SynonymAPI.synonymArray(str.toString()) : new ArrayList<>();
 	}
 	
 	public static List<String> synonymArray(String synStr) {
@@ -63,7 +63,7 @@ public class SynonymAPI {
 	
 	public static boolean checkSynonym(String prompt, String answer) {
 		List<String> arr = SynonymAPI.getSynonyms(prompt);
-		return arr.isEmpty() ? false : (arr.contains(answer));
+		return !arr.isEmpty() && (arr.contains(answer));
 	}
 
 }
