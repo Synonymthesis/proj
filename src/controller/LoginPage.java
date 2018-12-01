@@ -13,6 +13,8 @@ import javafx.stage.Window;
 import model.Player;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class LoginPage extends Application {
@@ -32,6 +34,7 @@ public class LoginPage extends Application {
     
     private static String nextScene = "";
     private static Player player= new Player();
+    private static final Logger LOGGER = Logger.getLogger(LoginPage.class.getName());
     
     public static void main(String[] args) {
         launch(args);
@@ -95,7 +98,7 @@ public class LoginPage extends Application {
         try {
         	loader.load();
         } catch (IOException e) {
-            e.printStackTrace();
+        	LOGGER.log(Level.SEVERE, "transition from Login", e.getStackTrace());
         }
         root = loader.getRoot();
         Stage stage = (Stage) owner;
