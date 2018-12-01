@@ -1,5 +1,4 @@
 package controller;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -13,6 +12,8 @@ import javafx.stage.Window;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import model.SynonymAPI;
 import model.WordPrompt;
@@ -38,7 +39,7 @@ public class PlayGamePage implements Initializable {
 	//TODO: Change this field to belong to a gameround or round class
 	//      that this playgame controller inherits from. Value determined at game start or menu
 	private int level = 1;
-	
+	private static final Logger LOGGER = Logger.getLogger(PlayGamePage.class.getName());
 	/**
      * Set up prompt for opening the play screen .
      *
@@ -55,18 +56,15 @@ public class PlayGamePage implements Initializable {
 		answerField.setText("");
 	}
 	
-	public void checkAnswer(ActionEvent ae) {
+	public void checkAnswer() {
 	
 		String ans = answerField.getText();
 		if (api.checkSynonym(currentPrompt, ans)) {
-			//TODO: do some point system thing
 			LoginPage l = new LoginPage();
 			l.getPlayer().incrementScore(1);
 			updatePrompt();
 		}
-		else {
-			System.out.println("WRONG ANSWEREFSDHJ");
-		}
+		//else wrong
 	}
 	
 	private void transitionScene(Button button, String fxmlScene) {
@@ -76,7 +74,7 @@ public class PlayGamePage implements Initializable {
         try {
         	root = loader.load();
         } catch (IOException e) {
-            e.printStackTrace();
+        	LOGGER.log(Level.WARNING, "transitioning from PlayGame", e.getStackTrace());
         }
         Stage stage = (Stage) owner;
         Scene scene = null;
