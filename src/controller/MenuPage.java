@@ -1,28 +1,31 @@
 package controller;
-import javafx.event.ActionEvent;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-
 import javafx.stage.Stage;
 import javafx.stage.Window;
-
 import java.io.IOException;
-
+import java.util.logging.Logger;
+import java.util.logging.Level;
+import javafx.scene.Parent;
 
 public class MenuPage {
 	
+  private static final Logger LOGGER = Logger.getLogger(MenuPage.class.getName());
+  
 	@FXML
 	private Button mainMenuButton;
 	@FXML
 	private Button resumeButton;
 	@FXML
 	private Button scoreboardButton;
+  @FXML
+  private Button levelButton;
 	
 	
-	public void gotoMainMenu(ActionEvent actionEvent) {
+	public void gotoMainMenu() {
 		transitionScene(mainMenuButton, "../view/LoginPage.fxml");
 	}
 	
@@ -31,8 +34,12 @@ public class MenuPage {
 	}
 	
 	public void openScoreboard() {
-    	transitionScene(scoreboardButton, "../view/Scoreboard.fxml");
-    }
+    		transitionScene(scoreboardButton, "../view/Scoreboard.fxml");
+    	}
+  
+  	public void getLevel() {
+        	transitionScene(levelButton, "../view/Difficulty.fxml");
+    	}
 	
 	private void transitionScene(Button button, String fxmlScene) {
 		Window owner = button.getScene().getWindow();
@@ -41,7 +48,7 @@ public class MenuPage {
         try {
         	root = loader.load();
         } catch (IOException e) {
-            e.printStackTrace();
+            LOGGER.log(Level.WARNING, "Button won't work.");
         }
         Stage stage = (Stage) owner;
         Scene scene = null;
@@ -49,3 +56,4 @@ public class MenuPage {
         stage.setScene(scene);
 	}
 }
+
