@@ -13,12 +13,10 @@ import model.WordPrompt;
 public class WordPromptTest {
 
 	private WordPrompt prompt;
-	private SynonymAPI api;
 
 	@Before
 	public void setUp() {
 		prompt = new WordPrompt();
-		api = new SynonymAPI();
 	}
 	
 	@Test
@@ -36,7 +34,7 @@ public class WordPromptTest {
 		int level = 1;
 		String word = prompt.getWord(level);
 		
-		List<String> synonyms = api.getSynonyms("test");
+		List<String> synonyms = SynonymAPI.getSynonyms("test");
 		assertTrue(word.length() <= 4);
 		assertTrue(synonyms.contains("trial"));
 	}
@@ -49,7 +47,7 @@ public class WordPromptTest {
 		int level = 2;
 		String word = prompt.getWord(level);
 		
-		List<String> synonyms = api.getSynonyms("beautiful");
+		List<String> synonyms = SynonymAPI.getSynonyms("beautiful");
 		assertTrue(word.length() > 4);
 		assertTrue(word.length() <= 7);
 		assertTrue(synonyms.contains("pretty"));
@@ -63,7 +61,7 @@ public class WordPromptTest {
 		int level = 3;
 		String word = prompt.getWord(level);
 		
-		List<String> synonyms = api.getSynonyms("mischievous");
+		List<String> synonyms = SynonymAPI.getSynonyms("mischievous");
 		assertTrue(word.length() > 7);
 		assertTrue(synonyms.contains("bad"));
 	}
