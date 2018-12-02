@@ -18,12 +18,24 @@ public class WordPrompt {
 	private static int medLength = 7;
 	
 	//public for tests. not sure if this is any good
-	public  List<String> easyWords = new ArrayList<>();
-	public  List<String> medWords = new ArrayList<>();
-	public  List<String> hardWords = new ArrayList<>();
+	private  List<String> easyWords = new ArrayList<>();
+	private  List<String> medWords = new ArrayList<>();
+	private  List<String> hardWords = new ArrayList<>();
 	
 	public WordPrompt() {
 		this.readWordsFile();
+	}
+	
+	public List<String> getMedWords() {
+		return medWords;
+	}
+
+	public List<String> getHardWords() {
+		return hardWords;
+	}
+
+	public List<String> getEasyWords() {
+		return easyWords;
 	}
 	
 	public void readWordsFile() {
