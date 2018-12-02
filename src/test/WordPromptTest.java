@@ -21,19 +21,15 @@ public class WordPromptTest {
 	
 	@Test
 	public void testConstructor() {
-		assertTrue(prompt.easyWords.size() >0 &&
-				 prompt.medWords.size()>0 &&
-				 prompt.hardWords.size()>0);
+		assertTrue(prompt.getEasyWords().size() >0 &&
+				 prompt.getMedWords().size()>0 &&
+				 prompt.getHardWords().size()>0);
 	}
 
 	@Test
 	public void testGetWordsEasy() {
-		//easy,bad,fun,fat,test,say
-		//medium,describe,famous,important,beautiful
-		//hard, Mischievous, lucky, angry
 		int level = 1;
 		String word = prompt.getWord(level);
-		
 		List<String> synonyms = SynonymAPI.getSynonyms("test");
 		assertTrue(word.length() <= 4);
 		assertTrue(synonyms.contains("trial"));
