@@ -37,9 +37,6 @@ public class WordPromptTest {
 	
 	@Test
 	public void testGetWordsMedium() {
-		//easy,bad,fun,fat,test,say
-		//medium,describe,famous,important,beautiful
-		//hard, Mischievous, lucky, angry
 		int level = 2;
 		String word = prompt.getWord(level);
 		
@@ -51,9 +48,6 @@ public class WordPromptTest {
 	
 	@Test
 	public void testGetWordsHard() {
-		//easy,bad,fun,fat,test,say
-		//medium,describe,famous,important,beautiful
-		//hard, Mischievous, lucky, angry
 		int level = 3;
 		String word = prompt.getWord(level);
 		

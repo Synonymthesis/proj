@@ -1,9 +1,21 @@
 package controller;
+import java.util.Collections;
+
+import javafx.application.Application;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.ObservableList;
+import javafx.css.PseudoClass;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 
 import javafx.stage.Stage;
@@ -14,7 +26,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+import javafx.animation.TranslateTransition;
+import javafx.util.Duration;
+import model.Shaker;
 import model.SynonymAPI;
 import model.WordPrompt;
 
@@ -32,12 +46,15 @@ public class PlayGamePage implements Initializable {
 	@FXML 
 	private Button skipButton;
 	
+	
 	private String currentPrompt;
 	private WordPrompt prompt = new WordPrompt();
 	
 	//TODO: Change this field to belong to a gameround or round class
 	//      that this playgame controller inherits from. Value determined at game start or menu
 	private int level = 1;
+	private LoginPage login = new LoginPage();
+	final PseudoClass errorClass = PseudoClass.getPseudoClass("error");
 	private static final Logger LOGGER = Logger.getLogger(PlayGamePage.class.getName());
 	/**
      * Set up prompt for opening the play screen .
@@ -45,7 +62,9 @@ public class PlayGamePage implements Initializable {
      */
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
+		level = login.getPlayer().getLevel();
 		updatePrompt();
+		//checkAnswer(answerField);
 	}
 	
 	public void updatePrompt() {
@@ -54,17 +73,53 @@ public class PlayGamePage implements Initializable {
 		wordPromptLabel.setText(word);
 		answerField.setText("");
 	}
-	
-	public void checkAnswer() {
-	
-		String ans = answerField.getText();
-		if (SynonymAPI.checkSynonym(currentPrompt, ans)) {
-			LoginPage l = new LoginPage();
-			l.getPlayer().incrementScore(1);
-			updatePrompt();
-		}
-		//else wrong
+
+//	private void checkAnswer(TextField tf) { 
+//		tf.textProperty().addListener(new ChangeListener<String>() {
+//	        @Override
+//	        public void changed(ObservableValue<? extends String> observable,
+//	                String oldValue, String newValue) {
+//	            validate(tf);
+//	        }
+//
+//	    });
+//	    validate(tf);
+//	}
+
+	public void check() {
+		validate(answerField);
 	}
+	
+	private void validate(TextField tf) {
+		Shaker shaker = new Shaker(tf);
+	    if (SynonymAPI.checkSynonym(currentPrompt, tf.getText())) {
+	    	tf.pseudoClassStateChanged(errorClass, false);
+	        login.getPlayer().incrementScore(1);
+	        updatePrompt();
+	    }
+	    else{
+	    	tf.pseudoClassStateChanged(errorClass, true);
+	    	shaker.shake();
+	    }
+
+	}
+
+	
+//	public void checkAnswer() {
+//		ObservableList<String> styleClass = answerField.getStyleClass();
+//		String ans = answerField.getText();
+//		if (SynonymAPI.checkSynonym(currentPrompt, ans)) {
+//			login.getPlayer().incrementScore(1);
+//			styleClass.removeAll(Collections.singleton("error"));    
+//			updatePrompt();
+//		}
+//		else {
+//			if (! answerField.getStyleClass().contains("error")) {
+//				answerField.getStyleClass().add("error");
+//            }
+//		}
+//	
+//	}
 	
 	private void transitionScene(Button button, String fxmlScene) {
 		Window owner = button.getScene().getWindow();

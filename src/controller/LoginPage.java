@@ -49,7 +49,7 @@ public class LoginPage extends Application {
         Parent root = null;
         root = loader.load();
         primaryStage.setTitle("FXML Login");
-        primaryStage.setScene(new Scene(root, 800, 500));
+        primaryStage.setScene(new Scene(root, 930, 700));
         primaryStage.show();
     }
     
@@ -98,7 +98,8 @@ public class LoginPage extends Application {
         try {
         	loader.load();
         } catch (IOException e) {
-        	LOGGER.log(Level.SEVERE, "transition from Login", e.getStackTrace());
+        	System.out.println(e.toString() );
+        	//LOGGER.log(Level.SEVERE, "loader not loading: from LoginPage", e.getStackTrace());
         }
         root = loader.getRoot();
         Stage stage = (Stage) owner;
