@@ -35,9 +35,14 @@ public class ScoreboardPage implements Initializable {
 	
 	public void backToMain() {
 		LoginPage l = new LoginPage();
+		EndGame e = new EndGame();
 		if (l.getNextScene()=="Scoreboard") {
 			transitionScene(backButton, "../view/LoginPage.fxml");
-		} else {
+		} 
+		else if (e.getNextScene()=="Scoreboard"){
+			transitionScene(backButton, "../view/EndGame.fxml");
+		}
+		else {
 			transitionScene(backButton, "../view/PlayGame.fxml");
 		}
 	}
