@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import model.Player;
 
+/* Daniel Wong */
 public class PlayerTest {
 	
 	@Test

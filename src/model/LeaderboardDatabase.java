@@ -27,16 +27,18 @@ public class LeaderboardDatabase {
 
 	private static final Logger LOGGER = Logger.getLogger(WordPrompt.class.getName());
 	private static final String DEFAULT_FILENAME = "src/model/leaderboard.json";
+	
+	private static LeaderboardDatabase instance;
 	private Map<String, Integer> scores;
 	
 	private String filename;
 	
-	public LeaderboardDatabase() {
+	private LeaderboardDatabase() {
 		this(DEFAULT_FILENAME);
 	}
 	
 	/* This constructor should be only called directly for testing and debugging. */
-	public LeaderboardDatabase(String filename) {
+	private LeaderboardDatabase(String filename) {
 		this.filename = filename;
 		scores = new HashMap<>();
 		JSONParser parser = new JSONParser();
@@ -53,6 +55,35 @@ public class LeaderboardDatabase {
         } catch (IOException|ParseException e) {
             LOGGER.log(Level.WARNING, e.toString());
         }
+	}
+	
+	public static synchronized LeaderboardDatabase getInstance() {
+		if (instance == null) {
+			instance = new LeaderboardDatabase();
+		}
+		
+		return instance;
+	}
+
+		
+	public static synchronized LeaderboardDatabase getInstance(String filename) {
+		if (instance == null) {
+			instance = new LeaderboardDatabase(filename);
+		}
+		
+		return instance;
+	}
+	public static synchronized LeaderboardDatabase newInstance() {
+		instance = new LeaderboardDatabase();
+		
+		return instance;
+	}
+
+		
+	public static synchronized LeaderboardDatabase newInstance(String filename) {
+		instance = new LeaderboardDatabase(filename);
+		
+		return instance;
 	}
 	
 	/* 

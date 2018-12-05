@@ -7,20 +7,17 @@ import org.junit.Test;
 
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.TextField;
 import model.Shaker;
-import model.WordPrompt;
 
+/* Stephanie Carpintero */
 public class ShakerTest {
 	
 	private Shaker shaker;
-	@FXML
-    private TextField t1;
 	
 	@Before
 	public void setUp() {
-		shaker = new Shaker(t1);
+		shaker = new Shaker(null);
 	}
 
 	@Test

@@ -41,15 +41,13 @@ public class PlayGamePage implements Initializable {
 	
 	private static String currentPrompt;
 	private WordPrompt prompt = new WordPrompt();
-	private static final Integer STARTTIME = 10; 
+	private static Integer STARTTIME = 30; 
 	private Timeline timeline;
     private IntegerProperty timeSeconds = new SimpleIntegerProperty(STARTTIME);
 
 	private int level = 1;
 	private LoginPage login = new LoginPage();
 	final PseudoClass errorClass = PseudoClass.getPseudoClass("error");
-	private static final String FILENAME = "src/model/leaderboard.json";
-	private LeaderboardDatabase data = new LeaderboardDatabase(FILENAME);
 
 	/**
      * Set up prompt for opening the play screen .
@@ -65,7 +63,14 @@ public class PlayGamePage implements Initializable {
 		visiblePause.setOnFinished(event -> controller.transitionScene(menuButton, "../view/EndGame.fxml"));
 		visiblePause.play();
 	}
-	
+	public void initializeLevel(int playerLevel) {
+		level = playerLevel;
+		if (level == 2) {
+			STARTTIME = 20;
+		}else if(level == 3){
+			STARTTIME = 10;
+		}
+	}
 	public void updatePrompt() {
 		String word = prompt.getWord(level);
 		currentPrompt = word;
@@ -82,7 +87,11 @@ public class PlayGamePage implements Initializable {
 	    if (SynonymAPI.checkSynonym(currentPrompt, tf.getText())) {
 	    	tf.pseudoClassStateChanged(errorClass, false);
 	        login.getPlayer().incrementScore(1);
-	        data.saveScore(login.getPlayer().getName(), login.getPlayer().getScore());
+	        String name = login.getPlayer().getName();
+	        if (name == null) {
+	        	name = "Your Score";
+	        }
+	        LeaderboardDatabase.getInstance().saveScore(name, login.getPlayer().getScore());
 	        updatePrompt();
 	    }
 	    else{

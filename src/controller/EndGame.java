@@ -15,8 +15,6 @@ public class EndGame implements Initializable {
 	private Button backButton;
 	@FXML 
 	private Button scoreboardButton;
-	@FXML
-	private Button shareButton;
 	
 	
 	private LoginPage login = new LoginPage();
@@ -45,10 +43,5 @@ public class EndGame implements Initializable {
 		nextScene = "Scoreboard";
 		SceneController controller = new SceneController();
 		controller.transitionScene(scoreboardButton, "../view/Scoreboard.fxml");
-	}
-	
-	public void shareRes() {
-		SceneController controller = new SceneController();
-		controller.transitionScene(shareButton, "../view/LoginPage.fxml");
 	}
 }
