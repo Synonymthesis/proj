@@ -1,5 +1,6 @@
 .root {
     -fx-font-size: 14px;
+    -fx-font: Courier;
     -fx-font-family: sans-serif;
     -fx-background-image: url("background1.jpg");
 }

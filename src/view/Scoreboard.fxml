@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
@@ -7,47 +8,52 @@
 
 <AnchorPane id="app-bg" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="930.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ScoreboardPage">
    <children>
-      <Label layoutX="342.0" layoutY="136.0" text="Scoreboard" textFill="WHITE" underline="true">
+      <ImageView fitHeight="597.0" fitWidth="809.0" layoutX="96.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@horiz_scroll.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="342.0" layoutY="136.0" text="Scoreboard" underline="true">
          <font>
             <Font name="Calibri" size="48.0" />
          </font>
       </Label>
-      <Label layoutX="193.0" layoutY="209.0" text="Player 1" textFill="WHITE">
+      <Label layoutX="193.0" layoutY="209.0" text="Player 1">
          <font>
             <Font name="Calibri" size="48.0" />
          </font>
       </Label>
-      <Label layoutX="193.0" layoutY="281.0" text="Player 2" textFill="WHITE">
+      <Label layoutX="193.0" layoutY="281.0" text="Player 2">
          <font>
             <Font name="Calibri" size="48.0" />
          </font>
       </Label>
-      <Label layoutX="193.0" layoutY="370.0" text="Player 3" textFill="WHITE">
+      <Label layoutX="193.0" layoutY="370.0" text="Player 3">
          <font>
             <Font name="Calibri" size="48.0" />
          </font>
       </Label>
-      <Label layoutX="619.0" layoutY="209.0" text="10000" textFill="WHITE">
+      <Label layoutX="619.0" layoutY="209.0" text="10000">
          <font>
             <Font name="Calibri" size="48.0" />
          </font>
       </Label>
-      <Label layoutX="631.0" layoutY="281.0" text="9000" textFill="WHITE">
+      <Label layoutX="631.0" layoutY="281.0" text="9000">
          <font>
             <Font name="Calibri" size="48.0" />
          </font>
       </Label>
-      <Label layoutX="632.0" layoutY="370.0" text="8000" textFill="WHITE">
+      <Label layoutX="632.0" layoutY="370.0" text="8000">
          <font>
             <Font name="Calibri" size="48.0" />
          </font>
       </Label>
-      <Label fx:id="playerScore" layoutX="652.0" layoutY="439.0" prefHeight="67.0" prefWidth="58.0" textFill="WHITE">
+      <Label fx:id="playerScore" layoutX="652.0" layoutY="439.0" prefHeight="67.0" prefWidth="58.0">
          <font>
             <Font name="Calibri" size="48.0" />
          </font>
       </Label>
-      <Label layoutX="193.0" layoutY="445.0" text="Your Score" textFill="WHITE">
+      <Label layoutX="193.0" layoutY="445.0" text="Your Score">
          <font>
             <Font name="Calibri" size="48.0" />
          </font>

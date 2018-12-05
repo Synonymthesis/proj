@@ -12,6 +12,11 @@
   <content>
     <AnchorPane id="app-bg" minHeight="0.0" minWidth="0.0" prefHeight="700.0" prefWidth="930.0" stylesheets="@style.css">
          <children>
+            <ImageView fitHeight="295.0" fitWidth="469.0" layoutX="273.0" layoutY="-10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@horiz_scroll.png" />
+               </image>
+            </ImageView>
             <Button fx:id="loginButton" layoutX="387.0" layoutY="465.0" mnemonicParsing="false" onAction="#startGame" prefHeight="60.0" prefWidth="153.0" text="Login">
                <font>
                   <Font size="24.0" />
@@ -21,13 +26,13 @@
                   <Font name="System Font" size="13.0" />
                </font>
             </TextField>
-            <Button fx:id="playButton" layoutX="382.0" layoutY="240.0" mnemonicParsing="false" onAction="#startGame" prefHeight="83.0" prefWidth="163.0" text="Play" textFill="#141414">
+            <Button fx:id="playButton" layoutX="384.0" layoutY="263.0" mnemonicParsing="false" onAction="#startGame" prefHeight="83.0" prefWidth="163.0" text="Play" textFill="#141414">
                <font>
                   <Font size="24.0" />
                </font></Button>
-            <ImageView fitHeight="161.0" fitWidth="512.0" layoutX="264.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="252.0" fitWidth="288.0" layoutX="348.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@titleLogo.png" />
+                  <Image url="@logo1.png" />
                </image>
             </ImageView>
             <Button fx:id="settingsButton" layoutX="61.0" layoutY="37.0" mnemonicParsing="false" onAction="#openSettings" prefHeight="63.0" prefWidth="175.0" text="Settings">
