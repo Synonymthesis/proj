@@ -61,8 +61,7 @@ public class PlayGamePage implements Initializable {
 	private int level = 1;
 	private LoginPage login = new LoginPage();
 	final PseudoClass errorClass = PseudoClass.getPseudoClass("hover");
-	private static final String FILENAME = "src/model/leaderboard.json";
-	private LeaderboardDatabase data = new LeaderboardDatabase(FILENAME);
+	private LeaderboardDatabase data = new LeaderboardDatabase();
 	private static final Logger LOGGER = Logger.getLogger(PlayGamePage.class.getName());
 	/**
      * Set up prompt for opening the play screen .

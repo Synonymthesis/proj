@@ -6,8 +6,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import javafx.animation.TranslateTransition;
-import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
 import model.Shaker;
 
 public class ShakerTest {
