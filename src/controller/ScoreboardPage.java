@@ -34,19 +34,34 @@ public class ScoreboardPage implements Initializable {
 	}
 	
 	public void backToMain() {
-		if (LoginPage.getNextScene()=="Scoreboard") {
-			SceneController s = new SceneController();
-			s.transitionScene(backButton, "../view/LoginPage.fxml");
+		LoginPage l = new LoginPage();
+		EndGame e = new EndGame();
+		if (l.getNextScene()=="Scoreboard") {
+			transitionScene(backButton, "../view/LoginPage.fxml");
 		} 
-		else if (EndGame.getNextScene()=="Scoreboard"){
-			SceneController s = new SceneController();
-			s.transitionScene(backButton, "../view/EndGame.fxml");
+		else if (e.getNextScene()=="Scoreboard"){
+			transitionScene(backButton, "../view/EndGame.fxml");
 		}
 		else {
-			SceneController s = new SceneController();
-			s.transitionScene(backButton, "../view/PlayGame.fxml");
+			transitionScene(backButton, "../view/PlayGame.fxml");
 		}
 	}
-
+	
+	private void transitionScene(Button button, String fxmlScene) {
+		Window owner = button.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlScene));
+        Parent root = null;
+        try {
+        	loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        root = loader.getRoot();
+        Stage stage = (Stage) owner;
+        Scene scene = null;
+        scene = new Scene(root);
+        stage.setScene(scene);
+	}
+	
 
 }
