@@ -41,9 +41,9 @@ public class PlayGamePage implements Initializable {
 	
 	private static String currentPrompt;
 	private WordPrompt prompt = new WordPrompt();
-	private static Integer STARTTIME = 30; 
+	private Integer startTime = 30; 
 	private Timeline timeline;
-    private IntegerProperty timeSeconds = new SimpleIntegerProperty(STARTTIME);
+    private IntegerProperty timeSeconds = new SimpleIntegerProperty(startTime);
 
 	private int level = 1;
 	private LoginPage login = new LoginPage();
@@ -59,16 +59,16 @@ public class PlayGamePage implements Initializable {
 		updatePrompt();
 		timer();
 		SceneController controller = new SceneController();
-		PauseTransition visiblePause = new PauseTransition(Duration.seconds(STARTTIME));
+		PauseTransition visiblePause = new PauseTransition(Duration.seconds(startTime));
 		visiblePause.setOnFinished(event -> controller.transitionScene(menuButton, "../view/EndGame.fxml"));
 		visiblePause.play();
 	}
 	public void initializeLevel(int playerLevel) {
 		level = playerLevel;
 		if (level == 2) {
-			STARTTIME = 20;
+			startTime = 20;
 		}else if(level == 3){
-			STARTTIME = 10;
+			startTime = 10;
 		}
 	}
 	public void updatePrompt() {
@@ -126,10 +126,10 @@ public class PlayGamePage implements Initializable {
             timeline.stop();
             controller.transitionScene(menuButton,"../view/PauseMenu.fxml" );
         }
-        timeSeconds.set(STARTTIME);
+        timeSeconds.set(startTime);
         timeline = new Timeline();
         timeline.getKeyFrames().add(
-                new KeyFrame(Duration.seconds(STARTTIME+1),
+                new KeyFrame(Duration.seconds(startTime+1),
                 new KeyValue(timeSeconds, 0)
                 ));
        
