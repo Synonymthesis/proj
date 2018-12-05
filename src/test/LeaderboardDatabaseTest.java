@@ -16,6 +16,7 @@ import org.junit.*;
 import model.LeaderboardDatabase;
 import model.WordPrompt;
 
+/* Nicole Anderson-Au */
 public class LeaderboardDatabaseTest {
 	
 	private static final Logger LOGGER = Logger.getLogger(WordPrompt.class.getName());

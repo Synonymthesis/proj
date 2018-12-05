@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import model.Shaker;
 import model.WordPrompt;
 
+/* Stephanie Carpintero */
 public class ShakerTest {
 	
 	private Shaker shaker;

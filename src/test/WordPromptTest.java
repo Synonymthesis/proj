@@ -10,6 +10,7 @@ import org.junit.Test;
 import model.SynonymAPI;
 import model.WordPrompt;
 
+/* Kaysha Chandran */
 public class WordPromptTest {
 
 	private WordPrompt prompt;
@@ -28,32 +29,20 @@ public class WordPromptTest {
 
 	@Test
 	public void testGetWordsEasy() {
-		int level = 1;
-		String word = prompt.getWord(level);
-		List<String> synonyms = SynonymAPI.getSynonyms("test");
-		assertTrue(word.length() <= 4);
-		assertTrue(synonyms.contains("trial"));
+		List<String> words = prompt.getEasyWords();
+		assertTrue(words.size() > 1);
 	}
-	
+
 	@Test
 	public void testGetWordsMedium() {
-		int level = 2;
-		String word = prompt.getWord(level);
-		
-		List<String> synonyms = SynonymAPI.getSynonyms("beautiful");
-		assertTrue(word.length() > 4);
-		assertTrue(word.length() <= 7);
-		assertTrue(synonyms.contains("pretty"));
+		List<String> words = prompt.getMedWords();
+		assertTrue(words.size() > 1);
 	}
-	
+
 	@Test
 	public void testGetWordsHard() {
-		int level = 3;
-		String word = prompt.getWord(level);
-		
-		List<String> synonyms = SynonymAPI.getSynonyms("mischievous");
-		assertTrue(word.length() > 7);
-		assertTrue(synonyms.contains("bad"));
+		List<String> words = prompt.getHardWords();
+		assertTrue(words.size() > 1);
 	}
 
 }
