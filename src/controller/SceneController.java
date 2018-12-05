@@ -16,7 +16,7 @@ public class SceneController {
 	private static final Logger LOGGER = Logger.getLogger(LoginPage.class.getName());
 	
 	public SceneController() {
-		
+		// This is just a constructor so that all other classes can access transitionScene().
 	}
 	
 	public void transitionScene(Button button, String fxmlScene) {
