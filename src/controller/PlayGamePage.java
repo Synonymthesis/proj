@@ -129,7 +129,7 @@ public class PlayGamePage implements Initializable {
         timeSeconds.set(startTime);
         timeline = new Timeline();
         timeline.getKeyFrames().add(
-                new KeyFrame(Duration.seconds(startTime+1),
+                new KeyFrame(Duration.seconds((double)startTime+1),
                 new KeyValue(timeSeconds, 0)
                 ));
        
