@@ -41,7 +41,7 @@ public class PlayGamePage implements Initializable {
 	
 	private String currentPrompt;
 	private WordPrompt prompt = new WordPrompt();
-	private Integer startTime = 30; 
+	private int startTime = 30; 
 	private Timeline timeline;
     private IntegerProperty timeSeconds = new SimpleIntegerProperty(startTime);
 
