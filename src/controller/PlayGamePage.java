@@ -1,19 +1,13 @@
 package controller;
-import java.util.Collections;
 
-import javafx.application.Application;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.ObservableList;
 import javafx.css.PseudoClass;
 import javafx.scene.Scene;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 
@@ -27,7 +21,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javafx.animation.Timeline;
-import javafx.animation.TranslateTransition;
 import javafx.util.Duration;
 import model.LeaderboardDatabase;
 import model.Shaker;
