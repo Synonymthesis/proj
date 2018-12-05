@@ -8,6 +8,12 @@
     -fx-font: 30px lato,sans-serif;
     -fx-padding: 10;
     -fx-background-color: #CCFF99;
+    -fx-focus-color: black;
+}
+
+.button:focused {
+  -fx-background-color: #CCFF99;
+  -fx-background-insets: -2, 0, 2, 4;
 }
 
 
@@ -17,7 +23,7 @@
   -fx-focus-color: blue;
 }
 
-.text-field:error {
+.text-field:hover {
     -fx-text-box-border: red ;
     -fx-highlight-fill: -fx-accent;
     -fx-highlight-text-fill: red;
