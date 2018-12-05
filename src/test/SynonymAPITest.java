@@ -10,24 +10,17 @@ import org.junit.*;
 import model.SynonymAPI;
 
 public class SynonymAPITest {
-	
-	private SynonymAPI api;
-
-	@Before
-	public void setUp() {
-		api = new SynonymAPI();
-	}
 
 	@Test
 	public void testGetSynonymsTest() {
-		List<String> synonyms = api.getSynonyms("test");
+		List<String> synonyms = SynonymAPI.getSynonyms("test");
 		assertFalse(synonyms.isEmpty());
 		assertTrue(synonyms.contains("trial"));
 	}
 	
 	@Test
 	public void testCheckSynonym() {
-		boolean b = api.checkSynonym("test", "trial");
+		boolean b = SynonymAPI.checkSynonym("test", "trial");
 		assertTrue(b);
 	}
 

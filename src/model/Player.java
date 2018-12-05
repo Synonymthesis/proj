@@ -3,7 +3,16 @@ package model;
 public class Player {
 	private String name;
 	private int totalScore = 0;
+	private int level = 1;
 	
+	public int getLevel() {
+		return level;
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
+	}
+
 	public void incrementScore(int inc) {
 		totalScore += inc;
 	}

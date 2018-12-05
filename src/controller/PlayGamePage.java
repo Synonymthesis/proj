@@ -1,10 +1,14 @@
 package controller;
-import javafx.event.ActionEvent;
+
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.css.PseudoClass;
+import javafx.scene.Scene;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 
 import javafx.stage.Stage;
@@ -13,7 +17,17 @@ import javafx.stage.Window;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+import javafx.animation.Timeline;
+import javafx.util.Duration;
+import model.LeaderboardDatabase;
+import model.Shaker;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.PauseTransition;
+import javafx.scene.paint.Color;
 import model.SynonymAPI;
 import model.WordPrompt;
 
@@ -30,22 +44,39 @@ public class PlayGamePage implements Initializable {
 	private Button menuButton;
 	@FXML 
 	private Button skipButton;
+	@FXML
+	private Label timerLabel;
+	@FXML
+	private Label wrongAnswer;
 	
-	private String currentPrompt;
+	
+	private static String currentPrompt;
 	private WordPrompt prompt = new WordPrompt();
-	private SynonymAPI api = new SynonymAPI();
+	private static final Integer STARTTIME = 10; 
+	private Timeline timeline;
+    private IntegerProperty timeSeconds = new SimpleIntegerProperty(STARTTIME);
+		
 	
-	//TODO: Change this field to belong to a gameround or round class
-	//      that this playgame controller inherits from. Value determined at game start or menu
+
 	private int level = 1;
-	
+	private LoginPage login = new LoginPage();
+	final PseudoClass errorClass = PseudoClass.getPseudoClass("error");
+	private static final String FILENAME = "src/model/leaderboard.json";
+	private LeaderboardDatabase data = new LeaderboardDatabase(FILENAME);
+	private static final Logger LOGGER = Logger.getLogger(PlayGamePage.class.getName());
 	/**
      * Set up prompt for opening the play screen .
      *
      */
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
+		level = login.getPlayer().getLevel();
 		updatePrompt();
+		timer();
+		PauseTransition visiblePause = new PauseTransition(Duration.seconds(STARTTIME));
+		visiblePause.setOnFinished(event -> transitionScene(menuButton, "../view/EndGame.fxml"));
+		visiblePause.play();
+		
 	}
 	
 	public void updatePrompt() {
@@ -54,19 +85,29 @@ public class PlayGamePage implements Initializable {
 		wordPromptLabel.setText(word);
 		answerField.setText("");
 	}
+
+	public void check() {
+		validate(answerField);
+	}
 	
-	public void checkAnswer(ActionEvent ae) {
-	
-		String ans = answerField.getText();
-		if (api.checkSynonym(currentPrompt, ans)) {
-			//TODO: do some point system thing
-			LoginPage l = new LoginPage();
-			l.getPlayer().incrementScore(1);
-			updatePrompt();
-		}
-		else {
-			System.out.println("WRONG ANSWEREFSDHJ");
-		}
+	private void validate(TextField tf) {
+		Shaker shaker = new Shaker(tf);
+	    if (SynonymAPI.checkSynonym(currentPrompt, tf.getText())) {
+	    	tf.pseudoClassStateChanged(errorClass, false);
+	        login.getPlayer().incrementScore(1);
+	        data.saveScore(login.getPlayer().getName(), login.getPlayer().getScore());
+	        updatePrompt();
+	    }
+	    else{
+	    	wrongAnswer.setText("Wrong Answer. Try Again");
+			wrongAnswer.setVisible(true);
+			PauseTransition visiblePause = new PauseTransition(Duration.seconds(1));
+			visiblePause.setOnFinished(event -> wrongAnswer.setVisible(false));
+			visiblePause.play();
+	    	tf.pseudoClassStateChanged(errorClass, true);
+	    	shaker.shake();
+	    }
+
 	}
 	
 	private void transitionScene(Button button, String fxmlScene) {
@@ -76,7 +117,7 @@ public class PlayGamePage implements Initializable {
         try {
         	root = loader.load();
         } catch (IOException e) {
-            e.printStackTrace();
+        	LOGGER.log(Level.WARNING, "transitioning from PlayGame", e.getStackTrace());
         }
         Stage stage = (Stage) owner;
         Scene scene = null;
@@ -91,5 +132,25 @@ public class PlayGamePage implements Initializable {
     public void openMenu() {
     	transitionScene(menuButton, "../view/PauseMenu.fxml");
     }
+    
+    
+    public void timer() {
+    	timerLabel.textProperty().bind(timeSeconds.asString());
+        timerLabel.setTextFill(Color.RED);
+        timerLabel.setStyle("-fx-font-size: 4em;");
+
+        if (timeline != null) {
+            timeline.stop();
+            transitionScene(menuButton,"../view/PauseMenu.fxml" );
+        }
+        timeSeconds.set(STARTTIME);
+        timeline = new Timeline();
+        timeline.getKeyFrames().add(
+                new KeyFrame(Duration.seconds(STARTTIME+1),
+                new KeyValue(timeSeconds, 0)
+                ));
+       
+        timeline.playFromStart();
+    } 
     
 }

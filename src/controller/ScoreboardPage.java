@@ -28,14 +28,23 @@ public class ScoreboardPage implements Initializable {
 	}
     
 	public void updateScore() {
-		System.out.println("Updateing playerscore");
 		LoginPage p = new LoginPage();
 		Player player = p.getPlayer();
 		playerScore.setText(String.valueOf(player.getScore()));
 	}
 	
 	public void backToMain() {
-		transitionScene(backButton, "../view/LoginPage.fxml");
+		LoginPage l = new LoginPage();
+		EndGame e = new EndGame();
+		if (l.getNextScene()=="Scoreboard") {
+			transitionScene(backButton, "../view/LoginPage.fxml");
+		} 
+		else if (e.getNextScene()=="Scoreboard"){
+			transitionScene(backButton, "../view/EndGame.fxml");
+		}
+		else {
+			transitionScene(backButton, "../view/PlayGame.fxml");
+		}
 	}
 	
 	private void transitionScene(Button button, String fxmlScene) {

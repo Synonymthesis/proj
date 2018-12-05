@@ -14,7 +14,7 @@ public class Difficulty extends LoginPage {
     
     private static final String PLAY_GAME = "../view/PlayGame.fxml";
     private static final Logger LOGGER = Logger.getLogger(Difficulty.class.getName());
-    
+    private LoginPage login  = new LoginPage();
     @FXML
     private Button easyButton;
     @FXML
@@ -30,14 +30,17 @@ public class Difficulty extends LoginPage {
      */
     
     public void easyLevel(){
+    	login.getPlayer().setLevel(1);
         transitionScene(easyButton);
     }
     
     public void medLevel(){
+    	login.getPlayer().setLevel(2);
         transitionScene(mediumButton);
     }
     
     public void hardLevel(){
+    	login.getPlayer().setLevel(3);
         transitionScene(hardButton);
     }
     

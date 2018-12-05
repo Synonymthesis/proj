@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="700.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EndGame">
+   <children>
+      <Button fx:id="backButton" layoutX="326.0" layoutY="549.0" mnemonicParsing="false" onAction="#goBack" text="Go Back To Login">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Label fx:id="scoreLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="352.0" layoutY="132.0" prefHeight="104.0" prefWidth="171.0" text="PointsValue" textAlignment="CENTER">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="333.0" layoutY="73.0" prefHeight="72.0" prefWidth="217.0" text="You Scored">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="338.0" layoutY="249.0" prefHeight="72.0" prefWidth="217.0" text="points!">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Button fx:id="shareButton" layoutX="354.0" layoutY="465.0" mnemonicParsing="false" onAction="#shareRes" text="Share Results">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="scoreboardButton" layoutX="353.0" layoutY="394.0" mnemonicParsing="false" onAction="#displayScoreboard" text="Scoreboard">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

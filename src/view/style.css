@@ -1,11 +1,30 @@
 .root {
     -fx-font-size: 14px;
     -fx-font-family: sans-serif;
-    -fx-background-image: url("./background1.jpg");
+    -fx-background-image: url("background1.jpg");
 }
 
 .button {
-    -fx-font: 16px lato,sans-serif;
+    -fx-font: 30px lato,sans-serif;
     -fx-padding: 10;
     -fx-background-color: #CCFF99;
+}
+
+
+.text-field{
+  -fx-border-width: 24 24 24 24; 
+  -fx-text-box-border: blue ;
+  -fx-focus-color: blue;
+}
+
+.text-field:error {
+    -fx-text-box-border: red ;
+    -fx-highlight-fill: -fx-accent;
+    -fx-highlight-text-fill: red;
+    -fx-background-radius: 3, 2, 4, 0;
+    -fx-prompt-text-fill: transparent;
+}
+
+#app-bg {
+	-fx-background-image: url("background1.jpg");
 }
