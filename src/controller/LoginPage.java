@@ -58,7 +58,7 @@ public class LoginPage extends Application {
      * @param actionEvent
      */
 
-    public void startGame(ActionEvent actionEvent){
+    public void startGame(){
     	nextScene = "PlayGame";
         transitionScene(playButton, "../view/PlayGame.fxml");
     }
@@ -67,7 +67,7 @@ public class LoginPage extends Application {
     	return player;
     }
     
-    public void getUsername(ActionEvent actionEvent) {
+    public void getUsername() {
     	String text = userField.getText();
     	player.setName(text);
     }
