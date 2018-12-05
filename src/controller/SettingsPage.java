@@ -20,7 +20,7 @@ public class SettingsPage {
 	@FXML
 	private Button exitButton;
 	
-	public void returnToMain(ActionEvent actionEvent) {
+	public void returnToMain() {
 		Window owner = exitButton.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/LoginPage.fxml"));
         Parent root = null;
