@@ -8,6 +8,12 @@
     -fx-font: 30px lato,sans-serif;
     -fx-padding: 10;
     -fx-background-color: #CCFF99;
+    -fx-focus-color: black;
+}
+
+.button:focused {
+  -fx-background-color: #CCFF99;
+  -fx-background-insets: -2, 0, 2, 4;
 }
 
 
