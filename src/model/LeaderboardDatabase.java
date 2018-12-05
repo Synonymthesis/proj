@@ -33,7 +33,7 @@ public class LeaderboardDatabase {
 	
 	private String filename;
 	
-	public LeaderboardDatabase() {
+	private LeaderboardDatabase() {
 		this(DEFAULT_FILENAME);
 	}
 	
@@ -57,7 +57,7 @@ public class LeaderboardDatabase {
         }
 	}
 	
-	private static synchronized LeaderboardDatabase getInstance() {
+	public static synchronized LeaderboardDatabase getInstance() {
 		if (instance == null) {
 			instance = new LeaderboardDatabase();
 		}
