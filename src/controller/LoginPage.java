@@ -1,13 +1,11 @@
 package controller;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.application.Application;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import model.Player;
@@ -48,6 +46,7 @@ public class LoginPage extends Application {
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/LoginPage.fxml"));
         Parent root = null;
         root = loader.load();
+		
         primaryStage.setTitle("FXML Login");
         primaryStage.setScene(new Scene(root, 930, 700));
         primaryStage.show();
@@ -58,7 +57,7 @@ public class LoginPage extends Application {
      * @param actionEvent
      */
 
-    public void startGame(ActionEvent actionEvent){
+    public void startGame(){
     	nextScene = "PlayGame";
         transitionScene(playButton, "../view/PlayGame.fxml");
     }
@@ -67,7 +66,7 @@ public class LoginPage extends Application {
     	return player;
     }
     
-    public void getUsername(ActionEvent actionEvent) {
+    public void getUsername() {
     	String text = userField.getText();
     	player.setName(text);
     }
