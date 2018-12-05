@@ -6,23 +6,29 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MenuPage">
+<AnchorPane id="app-bg" stylesheets="@style.css" prefHeight="700.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MenuPage">
    <children>
-      <TitledPane alignment="CENTER" animated="false" collapsible="false" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" text="Menu">
+      <TitledPane id="app-bg" alignment="CENTER" animated="false" collapsible="false" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="930.0" text="Menu">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="800.0">
+          <AnchorPane id="app-bg" minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="800.0">
                <children>
-                  <Button fx:id="resumeButton" layoutX="99.0" layoutY="58.0" minWidth="400.0" mnemonicParsing="false" onAction="#resumeGame" text="Resume">
+                  <Button fx:id="resumeButton" layoutX="258.0" layoutY="103.0" minWidth="400.0" mnemonicParsing="false" onAction="#resumeGame" text="Resume">
                      <font>
                         <Font name="Calibri" size="30.0" />
                      </font>
                   </Button>
-                  <Button fx:id="mainMenuButton" layoutX="99.0" layoutY="233.0" minWidth="400.0" mnemonicParsing="false" onAction="#gotoMainMenu" text="Quit Game">
+                  <Button fx:id="mainMenuButton" layoutX="259.0" layoutY="443.0" minWidth="400.0" mnemonicParsing="false" onAction="#gotoMainMenu" text="Quit Game">
                      <font>
                         <Font name="Calibri" size="30.0" />
                      </font>
                   </Button>
-                  <Button fx:id="scoreboardButton" layoutX="99.0" layoutY="146.0" minWidth="400.0" mnemonicParsing="false" onAction="#openScoreboard" text="Scoreboard">
+
+                  <Button fx:id="levelButton" layoutX="259.0" layoutY="213.0" minWidth="400.0" mnemonicParsing="false" onAction="#getLevel" text="Levels">
+                   <font>
+                        <Font name="Calibri" size="30.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="scoreboardButton" layoutX="263.0" layoutY="332.0" minWidth="400.0" mnemonicParsing="false" onAction="#openScoreboard" text="Scoreboard">
                      <font>
                         <Font name="Calibri" size="30.0" />
                      </font>

@@ -13,6 +13,8 @@ import javafx.stage.Window;
 import model.Player;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class LoginPage extends Application {
@@ -30,10 +32,15 @@ public class LoginPage extends Application {
     @FXML
     private TextField passwordField;
     
+    private static String nextScene = "";
     private static Player player= new Player();
+    private static final Logger LOGGER = Logger.getLogger(LoginPage.class.getName());
     
     public static void main(String[] args) {
         launch(args);
+    }
+    public String getNextScene() {
+    	return nextScene;
     }
     
     @Override
@@ -42,7 +49,7 @@ public class LoginPage extends Application {
         Parent root = null;
         root = loader.load();
         primaryStage.setTitle("FXML Login");
-        primaryStage.setScene(new Scene(root, 800, 500));
+        primaryStage.setScene(new Scene(root, 930, 700));
         primaryStage.show();
     }
     
@@ -52,6 +59,7 @@ public class LoginPage extends Application {
      */
 
     public void startGame(ActionEvent actionEvent){
+    	nextScene = "PlayGame";
         transitionScene(playButton, "../view/PlayGame.fxml");
     }
     
@@ -64,7 +72,7 @@ public class LoginPage extends Application {
     	player.setName(text);
     }
     
-    public void getPasswd(ActionEvent ae) {
+    public void getPasswd() {
     	String passwd = passwordField.getText();
     	//TODO: save password to username as key in some table
     }
@@ -73,11 +81,13 @@ public class LoginPage extends Application {
      * Default action for opening the settings.
      * @param actionEvent
      */
-    public void openSettings(ActionEvent actionEvent) {
+    public void openSettings() {
+    	nextScene = "Settings";
     	transitionScene(settingsButton, "../view/SettingsPage.fxml");
     }
     
     public void openScoreboard() {
+    	nextScene = "Scoreboard";
     	transitionScene(scoreboardButton, "../view/Scoreboard.fxml");
     }
     
@@ -86,10 +96,12 @@ public class LoginPage extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlScene));
         Parent root = null;
         try {
-        	root = loader.load();
+        	loader.load();
         } catch (IOException e) {
-            e.printStackTrace();
+        	System.out.println(e.toString() );
+        	//LOGGER.log(Level.SEVERE, "loader not loading: from LoginPage", e.getStackTrace());
         }
+        root = loader.getRoot();
         Stage stage = (Stage) owner;
         Scene scene = null;
         scene = new Scene(root);

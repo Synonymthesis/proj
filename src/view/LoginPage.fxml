@@ -8,25 +8,37 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginPage">
+<ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginPage">
   <content>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="503.0">
+    <AnchorPane id="app-bg" minHeight="0.0" minWidth="0.0" prefHeight="700.0" prefWidth="930.0" stylesheets="@style.css">
          <children>
-            <Button fx:id="loginButton" layoutX="276.0" layoutY="312.0" mnemonicParsing="false" onAction="#startGame" text="Login" />
-            <TextField fx:id="userField" layoutX="216.0" layoutY="234.0" onAction="#getUsername" promptText="Username">
+            <Button fx:id="loginButton" layoutX="387.0" layoutY="465.0" mnemonicParsing="false" onAction="#startGame" prefHeight="60.0" prefWidth="153.0" text="Login">
+               <font>
+                  <Font size="24.0" />
+               </font></Button>
+            <TextField fx:id="userField" layoutX="389.0" layoutY="361.0" onAction="#getUsername" prefHeight="29.0" prefWidth="150.0" promptText="Username">
                <font>
                   <Font name="System Font" size="13.0" />
                </font>
             </TextField>
-            <Button fx:id="playButton" layoutX="244.0" layoutY="175.0" mnemonicParsing="false" onAction="#startGame" prefHeight="48.0" prefWidth="110.0" text="Play" textFill="#141414" />
-            <ImageView fitHeight="124.0" fitWidth="200.0" layoutX="200.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+            <Button fx:id="playButton" layoutX="382.0" layoutY="240.0" mnemonicParsing="false" onAction="#startGame" prefHeight="83.0" prefWidth="163.0" text="Play" textFill="#141414">
+               <font>
+                  <Font size="24.0" />
+               </font></Button>
+            <ImageView fitHeight="161.0" fitWidth="512.0" layoutX="264.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@tree.jpg" />
+                  <Image url="@titleLogo.png" />
                </image>
             </ImageView>
-            <Button fx:id="settingsButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#openSettings" text="Settings" />
-            <Button fx:id="scoreboardButton" layoutX="261.0" layoutY="359.0" mnemonicParsing="false" onAction="#openScoreboard" text="Scoreboard" />
-            <PasswordField fx:id="passwordField" layoutX="216.0" layoutY="274.0" onAction="#getPasswd" promptText="Password" />
+            <Button fx:id="settingsButton" layoutX="61.0" layoutY="37.0" mnemonicParsing="false" onAction="#openSettings" prefHeight="54.0" prefWidth="133.0" text="Settings">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+            <Button fx:id="scoreboardButton" layoutX="333.0" layoutY="562.0" mnemonicParsing="false" onAction="#openScoreboard" prefHeight="65.0" prefWidth="261.0" stylesheets="@style.css" text="Scoreboard">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+            <PasswordField fx:id="passwordField" layoutX="389.0" layoutY="408.0" onAction="#getPasswd" prefHeight="25.0" prefWidth="150.0" promptText="Password" />
          </children></AnchorPane>
   </content>
 </ScrollPane>
