@@ -21,8 +21,6 @@ public class LeaderboardDatabaseTest {
 	
 	private static final Logger LOGGER = Logger.getLogger(WordPrompt.class.getName());
 	private static final String FILENAME = "src/model/test_leaderboard.json";
-	
-	private LeaderboardDatabase data;
 
 	@Before
 	public void setUp() {
@@ -35,7 +33,6 @@ public class LeaderboardDatabaseTest {
 		} catch (FileNotFoundException e) {
             LOGGER.log(Level.WARNING, e.toString());
 		}
-		data = new LeaderboardDatabase(FILENAME);
 	}
 	
 	@After
@@ -53,7 +50,7 @@ public class LeaderboardDatabaseTest {
 
 	@Test
 	public void testGetEmpty() {
-		assertTrue(data.getScores().isEmpty());
+		assertTrue(LeaderboardDatabase.getInstance(FILENAME).getScores().isEmpty());
 	}
 	
 	@Test
@@ -62,11 +59,11 @@ public class LeaderboardDatabaseTest {
 		String name = "Test1";
 		int score = 123;
 		
-		data.saveScore(name, score);
-		assertFalse(data.getScores().isEmpty());
+		LeaderboardDatabase.getInstance(FILENAME).saveScore(name, score);
+		assertFalse(LeaderboardDatabase.getInstance(FILENAME).getScores().isEmpty());
 		
 		scores.put(name, score);
-		assertEquals(scores, data.getScores());
+		assertEquals(scores, LeaderboardDatabase.getInstance(FILENAME).getScores());
 	}
 	
 	@Test
@@ -77,13 +74,13 @@ public class LeaderboardDatabaseTest {
 		String name2 = "TestA";
 		int score2 = 345;
 		
-		data.saveScore(name, score);
-		data.saveScore(name2, score2);
-		assertFalse(data.getScores().isEmpty());
+		LeaderboardDatabase.getInstance(FILENAME).saveScore(name, score);
+		LeaderboardDatabase.getInstance(FILENAME).saveScore(name2, score2);
+		assertFalse(LeaderboardDatabase.getInstance(FILENAME).getScores().isEmpty());
 		
 		scores.put(name, score);
 		scores.put(name2, score2);
-		assertEquals(scores, data.getScores());
+		assertEquals(scores, LeaderboardDatabase.getInstance(FILENAME).getScores());
 	}
 	
 	@Test
@@ -92,14 +89,15 @@ public class LeaderboardDatabaseTest {
 		String name = "Test2";
 		int score = 123;
 		
-		data.saveScore(name, score);
-		assertFalse(data.getScores().isEmpty());
+		LeaderboardDatabase.getInstance(FILENAME).saveScore(name, score);
+		assertFalse(LeaderboardDatabase.getInstance(FILENAME).getScores().isEmpty());
 		
 		scores.put(name, score);
-		assertEquals(scores, data.getScores());
-		
-		LeaderboardDatabase data2 = new LeaderboardDatabase(FILENAME);
-		assertEquals(scores, data2.getScores());
+		assertEquals(scores, LeaderboardDatabase.getInstance(FILENAME).getScores());
+
+		// Create new instance of the LeaderboardDatabase to ensure data retention.
+		LeaderboardDatabase.newInstance(FILENAME);
+		assertEquals(scores, LeaderboardDatabase.getInstance(FILENAME).getScores());
 	}
 	
 	@Test
@@ -112,26 +110,27 @@ public class LeaderboardDatabaseTest {
 		String name3 = "Test5";
 		int score3 = 789;
 		
-		data.saveScore(name1, score1);
-		assertFalse(data.getScores().isEmpty());
+		LeaderboardDatabase.getInstance(FILENAME).saveScore(name1, score1);
+		assertFalse(LeaderboardDatabase.getInstance(FILENAME).getScores().isEmpty());
 		
 		scores.put(name1, score1);
-		assertEquals(scores, data.getScores());
+		assertEquals(scores, LeaderboardDatabase.getInstance(FILENAME).getScores());
 		
-		data.saveScore(name2, score2);
-		assertFalse(data.getScores().isEmpty());
+		LeaderboardDatabase.getInstance(FILENAME).saveScore(name2, score2);
+		assertFalse(LeaderboardDatabase.getInstance(FILENAME).getScores().isEmpty());
 		
 		scores.put(name2, score2);
-		assertEquals(scores, data.getScores());
+		assertEquals(scores, LeaderboardDatabase.getInstance(FILENAME).getScores());
 		
-		LeaderboardDatabase data2 = new LeaderboardDatabase(FILENAME);
-		assertEquals(scores, data2.getScores());
+		// Create new instance of the LeaderboardDatabase to ensure data retention.
+		LeaderboardDatabase.newInstance(FILENAME);
+		assertEquals(scores, LeaderboardDatabase.getInstance(FILENAME).getScores());
 		
-		data2.saveScore(name3, score3);
-		assertFalse(data2.getScores().isEmpty());
+		LeaderboardDatabase.getInstance(FILENAME).saveScore(name3, score3);
+		assertFalse(LeaderboardDatabase.getInstance(FILENAME).getScores().isEmpty());
 		
 		scores.put(name3, score3);
-		assertEquals(scores, data2.getScores());
+		assertEquals(scores, LeaderboardDatabase.getInstance(FILENAME).getScores());
 	}
 
 }
