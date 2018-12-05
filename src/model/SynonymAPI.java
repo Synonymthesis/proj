@@ -37,7 +37,7 @@ public class SynonymAPI {
                 str.append(inputLine);
             in.close();
         } catch (IOException e) {
-            LOGGER.log(Level.SEVERE, "issue reading input from datamuse", e.toString());
+            LOGGER.log(Level.SEVERE, "issue reading input from datamuse", e.getStackTrace());
         }
         return str.length() > 0 ? SynonymAPI.synonymArray(str.toString()) : new ArrayList<>();
 	}

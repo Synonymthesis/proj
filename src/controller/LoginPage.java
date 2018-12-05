@@ -7,13 +7,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 import model.Player;
 
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 
 public class LoginPage extends Application {
 	
@@ -32,7 +28,6 @@ public class LoginPage extends Application {
     
     private static String nextScene = "";
     private static Player player= new Player();
-    private static final Logger LOGGER = Logger.getLogger(LoginPage.class.getName());
     
     public static void main(String[] args) {
         launch(args);
@@ -59,7 +54,8 @@ public class LoginPage extends Application {
 
     public void startGame(){
     	nextScene = "PlayGame";
-        transitionScene(playButton, "../view/PlayGame.fxml");
+    	SceneController controller = new SceneController();
+        controller.transitionScene(playButton, "../view/PlayGame.fxml");
     }
     
     public Player getPlayer() {
@@ -81,28 +77,13 @@ public class LoginPage extends Application {
      */
     public void openSettings() {
     	nextScene = "Settings";
-    	transitionScene(settingsButton, "../view/SettingsPage.fxml");
+    	SceneController controller = new SceneController();
+    	controller.transitionScene(settingsButton, "../view/SettingsPage.fxml");
     }
     
     public void openScoreboard() {
     	nextScene = "Scoreboard";
-    	transitionScene(scoreboardButton, "../view/Scoreboard.fxml");
+    	SceneController controller = new SceneController();
+    	controller.transitionScene(scoreboardButton, "../view/Scoreboard.fxml");
     }
-    
-    private void transitionScene(Button button, String fxmlScene) {
-		Window owner = button.getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlScene));
-        Parent root = null;
-        try {
-        	loader.load();
-        } catch (IOException e) {
-        	LOGGER.log(Level.SEVERE, "loader not loading: from LoginPage", e.getStackTrace());
-        }
-        root = loader.getRoot();
-        Stage stage = (Stage) owner;
-        Scene scene = null;
-        scene = new Scene(root);
-        stage.setScene(scene);
-	}
-
 }
