@@ -1,6 +1,7 @@
 .root {
     -fx-font-size: 14px;
     -fx-font-family: sans-serif;
+    -fx-background-image: url("background1.jpg");
 }
 
 .button {
@@ -22,4 +23,8 @@
     -fx-highlight-text-fill: red;
     -fx-background-radius: 3, 2, 4, 0;
     -fx-prompt-text-fill: transparent;
+}
+
+#app-bg {
+	-fx-background-image: url("background1.jpg");
 }

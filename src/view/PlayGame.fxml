@@ -16,11 +16,11 @@
             <Image url="@background1.jpg" />
          </image>
       </ImageView>
-      <TextField fx:id="answerField" layoutX="318.0" layoutY="365.0" prefHeight="57.0" prefWidth="297.0" promptText="Enter Synonym">
+      <TextField fx:id="answerField" alignment="CENTER" layoutX="318.0" layoutY="365.0" prefHeight="57.0" prefWidth="297.0" promptText="Enter Synonym">
          <font>
             <Font size="24.0" />
          </font></TextField>
-      <Label fx:id="wordPromptLabel" layoutX="357.0" layoutY="234.0" text="WORD">
+      <Label fx:id="wordPromptLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="357.0" layoutY="245.0" text="WORD" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font size="72.0" />
          </font>
