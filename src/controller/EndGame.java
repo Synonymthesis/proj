@@ -19,10 +19,6 @@ public class EndGame implements Initializable {
 	
 	private LoginPage login = new LoginPage();
 	private static String nextScene = "";
-	
-	public String getNextScene() {
-		return nextScene;
-	}
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
@@ -39,8 +35,15 @@ public class EndGame implements Initializable {
 		controller.transitionScene(backButton, "../view/LoginPage.fxml");
 	}
 	
+	public static synchronized String getNextScene() {
+		return nextScene;
+	}
+    public static synchronized void updateNextScene(String filename) {
+    	nextScene = filename;
+	}
+	
 	public void displayScoreboard() {
-		nextScene = "Scoreboard";
+		updateNextScene("Scoreboard");
 		SceneController controller = new SceneController();
 		controller.transitionScene(scoreboardButton, "../view/Scoreboard.fxml");
 	}

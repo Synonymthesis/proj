@@ -37,6 +37,9 @@ public class LoginPage extends Application {
     public static synchronized String getNextScene() {
 		return nextScene;
 	}
+    public static synchronized void updateNextScene(String filename) {
+    	nextScene = filename;
+	}
     
     @Override
     public void start(Stage primaryStage) throws IOException {
@@ -55,7 +58,7 @@ public class LoginPage extends Application {
      */
 
     public void startGame(){
-    	nextScene = "PlayGame";
+    	updateNextScene("PlayGame");
     	SceneController controller = new SceneController();
         controller.transitionScene(playButton, "../view/PlayGame.fxml");
     }
@@ -78,13 +81,13 @@ public class LoginPage extends Application {
      * @param actionEvent
      */
     public void openSettings() {
-    	nextScene = "Settings";
+    	updateNextScene("Settings");
     	SceneController controller = new SceneController();
     	controller.transitionScene(settingsButton, "../view/SettingsPage.fxml");
     }
     
     public void openScoreboard() {
-    	nextScene = "Scoreboard";
+    	updateNextScene("Scoreboard");
     	SceneController controller = new SceneController();
     	controller.transitionScene(scoreboardButton, "../view/Scoreboard.fxml");
     }
