@@ -39,7 +39,7 @@ public class PlayGamePage implements Initializable {
 	private Label wrongAnswer;
 	
 	
-	private static String currentPrompt;
+	private String currentPrompt;
 	private WordPrompt prompt = new WordPrompt();
 	private Integer startTime = 30; 
 	private Timeline timeline;
