@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import model.Shaker;
 
+/* Stephanie Carpintero */
 public class ShakerTest {
 	
 	private Shaker shaker;
