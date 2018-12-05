@@ -1,20 +1,13 @@
 package controller;
-import java.util.Collections;
 
-import javafx.application.Application;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.ObservableList;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.css.PseudoClass;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 
@@ -26,9 +19,15 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.animation.TranslateTransition;
+
+import javafx.animation.Timeline;
 import javafx.util.Duration;
+import model.LeaderboardDatabase;
 import model.Shaker;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.PauseTransition;
+import javafx.scene.paint.Color;
 import model.SynonymAPI;
 import model.WordPrompt;
 
@@ -45,16 +44,25 @@ public class PlayGamePage implements Initializable {
 	private Button menuButton;
 	@FXML 
 	private Button skipButton;
+	@FXML
+	private Label timerLabel;
+	@FXML
+	private Label wrongAnswer;
 	
 	
-	private String currentPrompt;
+	private static String currentPrompt;
 	private WordPrompt prompt = new WordPrompt();
+	private static final Integer STARTTIME = 10; 
+	private Timeline timeline;
+    private IntegerProperty timeSeconds = new SimpleIntegerProperty(STARTTIME);
+		
 	
-	//TODO: Change this field to belong to a gameround or round class
-	//      that this playgame controller inherits from. Value determined at game start or menu
+
 	private int level = 1;
 	private LoginPage login = new LoginPage();
 	final PseudoClass errorClass = PseudoClass.getPseudoClass("error");
+	private static final String FILENAME = "src/model/leaderboard.json";
+	private LeaderboardDatabase data = new LeaderboardDatabase(FILENAME);
 	private static final Logger LOGGER = Logger.getLogger(PlayGamePage.class.getName());
 	/**
      * Set up prompt for opening the play screen .
@@ -64,7 +72,11 @@ public class PlayGamePage implements Initializable {
 	public void initialize(URL url, ResourceBundle rb) {
 		level = login.getPlayer().getLevel();
 		updatePrompt();
-		//checkAnswer(answerField);
+		timer();
+		PauseTransition visiblePause = new PauseTransition(Duration.seconds(STARTTIME));
+		visiblePause.setOnFinished(event -> transitionScene(menuButton, "../view/EndGame.fxml"));
+		visiblePause.play();
+		
 	}
 	
 	public void updatePrompt() {
@@ -73,18 +85,6 @@ public class PlayGamePage implements Initializable {
 		wordPromptLabel.setText(word);
 		answerField.setText("");
 	}
-
-//	private void checkAnswer(TextField tf) { 
-//		tf.textProperty().addListener(new ChangeListener<String>() {
-//	        @Override
-//	        public void changed(ObservableValue<? extends String> observable,
-//	                String oldValue, String newValue) {
-//	            validate(tf);
-//	        }
-//
-//	    });
-//	    validate(tf);
-//	}
 
 	public void check() {
 		validate(answerField);
@@ -95,31 +95,20 @@ public class PlayGamePage implements Initializable {
 	    if (SynonymAPI.checkSynonym(currentPrompt, tf.getText())) {
 	    	tf.pseudoClassStateChanged(errorClass, false);
 	        login.getPlayer().incrementScore(1);
+	        data.saveScore(login.getPlayer().getName(), login.getPlayer().getScore());
 	        updatePrompt();
 	    }
 	    else{
+	    	wrongAnswer.setText("Wrong Answer. Try Again");
+			wrongAnswer.setVisible(true);
+			PauseTransition visiblePause = new PauseTransition(Duration.seconds(1));
+			visiblePause.setOnFinished(event -> wrongAnswer.setVisible(false));
+			visiblePause.play();
 	    	tf.pseudoClassStateChanged(errorClass, true);
 	    	shaker.shake();
 	    }
 
 	}
-
-	
-//	public void checkAnswer() {
-//		ObservableList<String> styleClass = answerField.getStyleClass();
-//		String ans = answerField.getText();
-//		if (SynonymAPI.checkSynonym(currentPrompt, ans)) {
-//			login.getPlayer().incrementScore(1);
-//			styleClass.removeAll(Collections.singleton("error"));    
-//			updatePrompt();
-//		}
-//		else {
-//			if (! answerField.getStyleClass().contains("error")) {
-//				answerField.getStyleClass().add("error");
-//            }
-//		}
-//	
-//	}
 	
 	private void transitionScene(Button button, String fxmlScene) {
 		Window owner = button.getScene().getWindow();
@@ -143,5 +132,25 @@ public class PlayGamePage implements Initializable {
     public void openMenu() {
     	transitionScene(menuButton, "../view/PauseMenu.fxml");
     }
+    
+    
+    public void timer() {
+    	timerLabel.textProperty().bind(timeSeconds.asString());
+        timerLabel.setTextFill(Color.RED);
+        timerLabel.setStyle("-fx-font-size: 4em;");
+
+        if (timeline != null) {
+            timeline.stop();
+            transitionScene(menuButton,"../view/PauseMenu.fxml" );
+        }
+        timeSeconds.set(STARTTIME);
+        timeline = new Timeline();
+        timeline.getKeyFrames().add(
+                new KeyFrame(Duration.seconds(STARTTIME+1),
+                new KeyValue(timeSeconds, 0)
+                ));
+       
+        timeline.playFromStart();
+    } 
     
 }

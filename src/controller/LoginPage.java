@@ -72,9 +72,8 @@ public class LoginPage extends Application {
     	player.setName(text);
     }
     
-    public void getPasswd() {
-    	String passwd = passwordField.getText();
-    	//TODO: save password to username as key in some table
+    public String getPasswd() {
+    	return passwordField.getText();
     }
     
     /**
@@ -98,8 +97,7 @@ public class LoginPage extends Application {
         try {
         	loader.load();
         } catch (IOException e) {
-        	System.out.println(e.toString() );
-        	//LOGGER.log(Level.SEVERE, "loader not loading: from LoginPage", e.getStackTrace());
+        	LOGGER.log(Level.SEVERE, "loader not loading: from LoginPage", e.getStackTrace());
         }
         root = loader.getRoot();
         Stage stage = (Stage) owner;
