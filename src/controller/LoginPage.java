@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import model.LeaderboardDatabase;
 import model.Player;
 
 import java.io.IOException;
@@ -32,9 +33,10 @@ public class LoginPage extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    public String getNextScene() {
-    	return nextScene;
-    }
+    
+    public static synchronized String getNextScene() {
+		return nextScene;
+	}
     
     @Override
     public void start(Stage primaryStage) throws IOException {
