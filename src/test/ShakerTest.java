@@ -7,10 +7,8 @@ import org.junit.Test;
 
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.TextField;
 import model.Shaker;
-import model.WordPrompt;
 
 public class ShakerTest {
 	
