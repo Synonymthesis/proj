@@ -3,22 +3,12 @@ package controller;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.css.PseudoClass;
-import javafx.scene.Scene;
-
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.control.*;
 
-import javafx.stage.Stage;
-import javafx.stage.Window;
-
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import javafx.animation.Timeline;
 import javafx.util.Duration;
@@ -30,7 +20,6 @@ import javafx.animation.PauseTransition;
 import javafx.scene.paint.Color;
 import model.SynonymAPI;
 import model.WordPrompt;
-
 
 public class PlayGamePage implements Initializable {
 	
@@ -55,15 +44,13 @@ public class PlayGamePage implements Initializable {
 	private static final Integer STARTTIME = 10; 
 	private Timeline timeline;
     private IntegerProperty timeSeconds = new SimpleIntegerProperty(STARTTIME);
-		
-	
 
 	private int level = 1;
 	private LoginPage login = new LoginPage();
 	final PseudoClass errorClass = PseudoClass.getPseudoClass("error");
 	private static final String FILENAME = "src/model/leaderboard.json";
 	private LeaderboardDatabase data = new LeaderboardDatabase(FILENAME);
-	private static final Logger LOGGER = Logger.getLogger(PlayGamePage.class.getName());
+
 	/**
      * Set up prompt for opening the play screen .
      *
@@ -73,10 +60,10 @@ public class PlayGamePage implements Initializable {
 		level = login.getPlayer().getLevel();
 		updatePrompt();
 		timer();
+		SceneController controller = new SceneController();
 		PauseTransition visiblePause = new PauseTransition(Duration.seconds(STARTTIME));
-		visiblePause.setOnFinished(event -> transitionScene(menuButton, "../view/EndGame.fxml"));
+		visiblePause.setOnFinished(event -> controller.transitionScene(menuButton, "../view/EndGame.fxml"));
 		visiblePause.play();
-		
 	}
 	
 	public void updatePrompt() {
@@ -109,28 +96,14 @@ public class PlayGamePage implements Initializable {
 	    }
 
 	}
-	
-	private void transitionScene(Button button, String fxmlScene) {
-		Window owner = button.getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlScene));
-        Parent root = null;
-        try {
-        	root = loader.load();
-        } catch (IOException e) {
-        	LOGGER.log(Level.WARNING, "transitioning from PlayGame", e.getStackTrace());
-        }
-        Stage stage = (Stage) owner;
-        Scene scene = null;
-        scene = new Scene(root);
-        stage.setScene(scene);
-	}
 
 	/**
      * Default action for opening the pause menu.
      * @param actionEvent
      */
     public void openMenu() {
-    	transitionScene(menuButton, "../view/PauseMenu.fxml");
+    	SceneController controller = new SceneController();
+    	controller.transitionScene(menuButton, "../view/PauseMenu.fxml");
     }
     
     
@@ -138,10 +111,11 @@ public class PlayGamePage implements Initializable {
     	timerLabel.textProperty().bind(timeSeconds.asString());
         timerLabel.setTextFill(Color.RED);
         timerLabel.setStyle("-fx-font-size: 4em;");
+        SceneController controller = new SceneController();
 
         if (timeline != null) {
             timeline.stop();
-            transitionScene(menuButton,"../view/PauseMenu.fxml" );
+            controller.transitionScene(menuButton,"../view/PauseMenu.fxml" );
         }
         timeSeconds.set(STARTTIME);
         timeline = new Timeline();
