@@ -23,8 +23,6 @@ public class EndGame implements Initializable {
 	private Button backButton;
 	@FXML 
 	private Button scoreboardButton;
-	@FXML
-	private Button shareButton;
 	
 	
 	private LoginPage login = new LoginPage();
@@ -54,9 +52,6 @@ public class EndGame implements Initializable {
 		transitionScene(scoreboardButton, "../view/Scoreboard.fxml");
 	}
 	
-	public void shareRes() {
-		transitionScene(shareButton, "../view/LoginPage.fxml");
-	}
 	
 	private void transitionScene(Button button, String fxmlScene) {
 		Window owner = button.getScene().getWindow();

@@ -5,7 +5,7 @@ import javafx.scene.Node;
 import javafx.util.Duration;
 
 public class Shaker {
-    private static TranslateTransition tt;
+    private TranslateTransition tt;
 
     public TranslateTransition getTt() {
 		return tt;
