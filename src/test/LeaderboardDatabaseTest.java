@@ -33,6 +33,8 @@ public class LeaderboardDatabaseTest {
 		} catch (FileNotFoundException e) {
             LOGGER.log(Level.WARNING, e.toString());
 		}
+
+		LeaderboardDatabase.newInstance(FILENAME);
 	}
 	
 	@After

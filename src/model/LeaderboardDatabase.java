@@ -38,7 +38,7 @@ public class LeaderboardDatabase {
 	}
 	
 	/* This constructor should be only called directly for testing and debugging. */
-	public LeaderboardDatabase(String filename) {
+	private LeaderboardDatabase(String filename) {
 		this.filename = filename;
 		scores = new HashMap<>();
 		JSONParser parser = new JSONParser();
@@ -57,7 +57,7 @@ public class LeaderboardDatabase {
         }
 	}
 	
-	public static synchronized LeaderboardDatabase getInstance() {
+	private static synchronized LeaderboardDatabase getInstance() {
 		if (instance == null) {
 			instance = new LeaderboardDatabase();
 		}

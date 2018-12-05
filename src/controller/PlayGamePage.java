@@ -62,7 +62,6 @@ public class PlayGamePage implements Initializable {
 	private LoginPage login = new LoginPage();
 	final PseudoClass errorClass = PseudoClass.getPseudoClass("error");
 	private static final String FILENAME = "src/model/leaderboard.json";
-	private LeaderboardDatabase data = new LeaderboardDatabase(FILENAME);
 	private static final Logger LOGGER = Logger.getLogger(PlayGamePage.class.getName());
 	/**
      * Set up prompt for opening the play screen .
@@ -95,7 +94,7 @@ public class PlayGamePage implements Initializable {
 	    if (SynonymAPI.checkSynonym(currentPrompt, tf.getText())) {
 	    	tf.pseudoClassStateChanged(errorClass, false);
 	        login.getPlayer().incrementScore(1);
-	        data.saveScore(login.getPlayer().getName(), login.getPlayer().getScore());
+	        LeaderboardDatabase.getInstance().saveScore(login.getPlayer().getName(), login.getPlayer().getScore());
 	        updatePrompt();
 	    }
 	    else{
