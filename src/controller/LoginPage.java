@@ -96,7 +96,6 @@ public class LoginPage extends Application {
         try {
         	loader.load();
         } catch (IOException e) {
-        	e.printStackTrace();
         	LOGGER.log(Level.SEVERE, "loader not loading: from LoginPage", e.getStackTrace());
         }
         root = loader.getRoot();
