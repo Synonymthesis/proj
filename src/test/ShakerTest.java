@@ -8,6 +8,7 @@ import org.junit.Test;
 import javafx.animation.TranslateTransition;
 import model.Shaker;
 
+/* Stephanie Carpintero */
 public class ShakerTest {
 	
 	private Shaker shaker;

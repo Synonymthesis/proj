@@ -9,6 +9,7 @@ import org.junit.*;
 
 import model.SynonymAPI;
 
+/* Andy Hak */
 public class SynonymAPITest {
 
 	@Test
