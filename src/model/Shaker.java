@@ -5,9 +5,13 @@ import javafx.scene.Node;
 import javafx.util.Duration;
 
 public class Shaker {
-    private TranslateTransition tt;
+    private static TranslateTransition tt;
 
-    public Shaker(Node node) {
+    public TranslateTransition getTt() {
+		return tt;
+	}
+
+	public Shaker(Node node) {
         tt = new TranslateTransition(Duration.millis(50), node);
         tt.setFromX(0f);
         tt.setByX(20f);
