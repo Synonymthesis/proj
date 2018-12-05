@@ -42,7 +42,7 @@
             <Font name="Ink Free" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="playerScore" layoutX="488.0" layoutY="297.0">
+      <Label fx:id="playerScore" layoutX="633.0" layoutY="380.0" prefHeight="44.0" prefWidth="57.0">
          <font>
             <Font name="Ink Free" size="24.0" />
          </font>

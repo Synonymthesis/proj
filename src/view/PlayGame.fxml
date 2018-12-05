@@ -25,7 +25,7 @@
             <Font size="72.0" />
          </font>
       </Label>
-      <Button fx:id="submitButton" layoutX="368.0" layoutY="467.0" mnemonicParsing="false" onAction="#check" prefHeight="85.0" prefWidth="205.0" text="Submit">
+      <Button fx:id="submitButton" layoutX="366.0" layoutY="520.0" mnemonicParsing="false" onAction="#check" prefHeight="85.0" prefWidth="205.0" text="Submit">
          <font>
             <Font size="30.0" />
          </font></Button>
@@ -37,5 +37,13 @@
          <font>
             <Font size="30.0" />
          </font></Button>
+      <Label fx:id="timerLabel" layoutX="408.0" layoutY="191.0" prefHeight="42.0" prefWidth="149.0" text="00:00">
+         <font>
+            <Font size="36.0" />
+         </font></Label>
+      <Label fx:id="wrongAnswer" layoutX="350.0" layoutY="444.0" prefHeight="43.0" prefWidth="220.0">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
    </children>
 </AnchorPane>
