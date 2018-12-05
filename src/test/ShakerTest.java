@@ -13,12 +13,10 @@ import model.Shaker;
 public class ShakerTest {
 	
 	private Shaker shaker;
-	@FXML
-    private TextField t1;
 	
 	@Before
 	public void setUp() {
-		shaker = new Shaker(t1);
+		shaker = new Shaker(null);
 	}
 
 	@Test

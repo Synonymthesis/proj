@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="700.0" prefWidth="930.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EndGame">
    <children>
-      <ImageView fitHeight="700.0" fitWidth="930.0" layoutX="208.0" layoutY="45.0" opacity="0.87" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="373.0" fitWidth="541.0" layoutX="309.0" layoutY="10.0" opacity="0.87" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@scroll.png" />
          </image>
@@ -34,12 +34,7 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Button fx:id="shareButton" layoutX="335.0" layoutY="485.0" mnemonicParsing="false" onAction="#shareRes" prefHeight="66.0" prefWidth="223.0" text="Share Results">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Button>
-      <Button fx:id="scoreboardButton" layoutX="338.0" layoutY="379.0" mnemonicParsing="false" onAction="#displayScoreboard" prefHeight="72.0" prefWidth="200.0" text="Scoreboard">
+      <Button fx:id="scoreboardButton" layoutX="345.0" layoutY="433.0" mnemonicParsing="false" onAction="#displayScoreboard" prefHeight="72.0" prefWidth="200.0" text="Scoreboard">
          <font>
             <Font size="20.0" />
          </font>

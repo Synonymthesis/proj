@@ -23,7 +23,7 @@
   -fx-focus-color: blue;
 }
 
-.text-field:error {
+.text-field:hover {
     -fx-text-box-border: red ;
     -fx-highlight-fill: -fx-accent;
     -fx-highlight-text-fill: red;
