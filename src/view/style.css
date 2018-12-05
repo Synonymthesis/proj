@@ -11,12 +11,6 @@
     -fx-focus-color: black;
 }
 
-.button:focused {
-  -fx-background-color: #CCFF99;
-  -fx-background-insets: -2, 0, 2, 4;
-}
-
-
 .text-field{
   -fx-border-width: 24 24 24 24; 
   -fx-text-box-border: blue ;
