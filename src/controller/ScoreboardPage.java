@@ -52,10 +52,11 @@ public class ScoreboardPage implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlScene));
         Parent root = null;
         try {
-        	root = loader.load();
+        	loader.load();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        root = loader.getRoot();
         Stage stage = (Stage) owner;
         Scene scene = null;
         scene = new Scene(root);
